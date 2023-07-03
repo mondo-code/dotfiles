@@ -23,6 +23,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -70,13 +71,12 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-
+    Key([mod], "d", lazy.spawn("dmenu_run")),
     # Custom binds
     # Open Brave
     Key([mod], "b", lazy.spawn("brave"))
     # Deepin Screenshot
-    #Key([mod], "s", lazy.spawn("deepin-screenshot"))
+    # Key([mod], "s", lazy.spawn("deepin-screenshot"))
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -109,7 +109,7 @@ layouts = [
     layout.Columns(border_width=2, 
                    border_focus="#5e81ac",
                    border_normal="#4c566a",
-                   margin=5),
+                   margin=8),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -125,23 +125,27 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
+    font="JetBrains Mono",
     fontsize=12,
-    padding=3,
+    padding=8,
 )
 extension_defaults = widget_defaults.copy()
 
 # initializing bar
-# TODO: add bar stuff here
-
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.CurrentLayout(
+                    font="JetBrains Mono", 
+                    foreground="#e5c07b"
+                ),
+                widget.GroupBox(
+                    highlight_method='line',
+                    highlight_color=['61afef'],
+                ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(foreground="#96bc74"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -150,26 +154,41 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CPU(),
-                widget.CPUGraph(),
-                widget.Memory(measure_mem='G'),
-                widget.MemoryGraph(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.CPU(foreground="#61afef"),
+                widget.CPUGraph(
+                    border_color='#61afef',
+                    fill_color='#3398ea',
+                    graph_color='#61afef',
+                ),
+                widget.Memory(measure_mem='G', foreground="#c678dd"),
+                widget.MemoryGraph(
+                    border_color='#c678dd',
+                    fill_color='#b54fd3',
+                    graph_color='#c678dd'
+                ),
+                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground="#da676b"),
             ],
-            30,
+            28,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            opacity=0.9,
-            background=["#00141B"],
+            # opacity=0.55,
+            name="qtilebar",
+            background=["#282c34"],
          ),
         ),
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.CurrentLayout(
+                    font="JetBrains Mono",
+                    foreground="#e5c07b"
+                ),
+                widget.GroupBox(
+                    highlight_method='line',
+                    highlight_color=['61afef'],
+                ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(foreground="#96bc74"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -178,18 +197,26 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CPU(),
-                widget.CPUGraph(),
-                widget.Memory(measure_mem='G'),
-                widget.MemoryGraph(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.CPU(foreground="#5ca5e0"),
+                widget.CPUGraph(
+                    border_color='#61afef',
+                    fill_color='#3398ea',
+                    graph_color='#61afef',
+                ),
+                widget.Memory(measure_mem='G', foreground="#ae6bba"),
+                widget.MemoryGraph(
+                    border_color='#c678dd',
+                    fill_color='#b54fd3',
+                    graph_color='#c678dd'
+                ),
+                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground="#da676b"),
             ],
-            30,
+            28,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            opacity=0.9,
-            background=["#00141B"],
+            # opacity=0.55,
+            name="qtilebar",
+            background=["#282c34"],
         ),
     ),
 ]
@@ -240,6 +267,6 @@ wl_input_rules = None
 wmname = "LG3D"
 
 # run shell commands that complete the DE
-import os
 os.system('picom -b')
-os.system('feh --bg-scale ~/Pictures/Wallpapers/darkshore.jpg')
+os.system('feh --bg-scale ~/Pictures/Wallpapers/od_arch.png')
+os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')

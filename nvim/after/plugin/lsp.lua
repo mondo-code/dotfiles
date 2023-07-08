@@ -3,7 +3,7 @@ lsp.preset("recommended")
 
 lsp.configure('tsserver', {
 	on_attach = function(client, bufnr)
-		print('hello tsserver')
+		print('tsserver')
 	end,
 	settings = {
 		completions = {
@@ -12,11 +12,11 @@ lsp.configure('tsserver', {
 	}
 })
 
-lsp.configure('jdtls', {
-  on_attach = function(client, bufnr)
-    print('hello jdtls')
-  end
-})
+-- lsp.configure('jdtls', {
+--   on_attach = function(client, bufnr)
+--     print('jdtls')
+--   end
+-- })
 
 lsp.setup()
 

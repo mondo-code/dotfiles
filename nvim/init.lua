@@ -12,7 +12,8 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
-vim.cmd [[set mouse=]]
+vim.opt.termguicolors = true
+vim.cmd[[set mouse=]]
 
 -- debugging binds
 vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")

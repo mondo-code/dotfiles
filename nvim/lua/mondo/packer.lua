@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use 'navarasu/onedark.nvim'
+  -- use 'navarasu/onedark.nvim'
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -35,13 +35,13 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
-  use {
-	  'nvim-tree/nvim-tree.lua',
-	  requires = {
-		  'nvim-tree/nvim-web-devicons', -- optional, for file icons
-	  },
-	  tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
+  -- use {
+	 --  'nvim-tree/nvim-tree.lua',
+	 --  requires = {
+		--   'nvim-tree/nvim-web-devicons', -- optional, for file icons
+	 --  },
+	 --  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  -- }
   use {
 	  'numToStr/Comment.nvim',
 	  config = function()
@@ -73,4 +73,7 @@ return require('packer').startup(function(use)
 		  }
 	  end
   }
+  use 'mfussenegger/nvim-jdtls'
+  use 'navarasu/onedark.nvim'
+  use 'xiyaowong/transparent.nvim'
 end)

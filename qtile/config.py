@@ -74,9 +74,9 @@ keys = [
     Key([mod], "d", lazy.spawn("dmenu_run")),
     # Custom binds
     # Open Brave
-    Key([mod], "b", lazy.spawn("brave"))
+    Key([mod], "b", lazy.spawn("brave")),
     # Deepin Screenshot
-    # Key([mod], "s", lazy.spawn("deepin-screenshot"))
+    Key([mod], "s", lazy.spawn("deepin-screenshot"))
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -106,16 +106,17 @@ for i in groups:
     )
 
 layouts = [
+    layout.MonadTall(border_width=2, 
+                     border_focus="#61afef", 
+                     margin=12),
     layout.Columns(border_width=2, 
-                   border_focus="#5e81ac",
-                   border_normal="#4c566a",
-                   margin=8),
+                   border_focus="#61afef",
+                   margin=12),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -268,5 +269,5 @@ wmname = "LG3D"
 
 # run shell commands that complete the DE
 os.system('picom -b')
-os.system('feh --bg-scale ~/Pictures/Wallpapers/od_arch.png')
+os.system('feh --bg-scale ~/Pictures/Wallpapers/endyFixed_01.png')
 os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')

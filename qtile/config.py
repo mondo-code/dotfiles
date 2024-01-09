@@ -25,12 +25,11 @@
 
 import os
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "alacritty"
 
 # keybinds
 keys = [
@@ -55,6 +54,9 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # switch monitor binds
+    Key([mod], "comma", lazy.next_screen(), desc="Focus next monitor"),
+    Key([mod], "period", lazy.prev_screen(), desc="Focus previous monitor"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -75,8 +77,10 @@ keys = [
     # Custom binds
     # Open Brave
     Key([mod], "b", lazy.spawn("brave")),
-    # Deepin Screenshot
-    Key([mod], "s", lazy.spawn("deepin-screenshot"))
+    # screenshot tool
+    Key([mod], "s", lazy.spawn("escrotum -s '~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'")),
+    # doom emacs
+    Key([mod], "e", lazy.spawn("emacs")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -105,12 +109,27 @@ for i in groups:
         ]
     )
 
+# colorscheme: tokyo night
+colors = {
+    "background": "#1a1b26",
+    "monochrome_background": "#24283b",
+    "purple": "#bb9af7",
+    "blue": "#2ac3de",
+    "green": "#9ece6a",
+    "red": "#f7768e",
+    "orange": "#ff9e64",
+    "yellow": "#e0af68",
+    "violet": "#7aa2f7",
+    "lightblue": "#7dcfff",
+    "lighterblue": "#b4f9f8",
+}
+
 layouts = [
-    layout.MonadTall(border_width=2, 
-                     border_focus="#61afef", 
+    layout.MonadTall(border_width=2,
+                     border_focus=colors["purple"],
                      margin=12),
-    layout.Columns(border_width=2, 
-                   border_focus="#61afef",
+    layout.Columns(border_width=2,
+                   border_focus=colors["purple"],
                    margin=12),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -126,7 +145,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="JetBrains Mono",
+    font="Hack",
     fontsize=12,
     padding=8,
 )
@@ -137,16 +156,15 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(
-                    font="JetBrains Mono", 
-                    foreground="#e5c07b"
-                ),
+                # add distro image, that would be cool
                 widget.GroupBox(
-                    highlight_method='line',
-                    highlight_color=['61afef'],
+                    highlight_method='text',
+                    active="#9aa5ce",
+                    inactive="#414868",
+                    this_current_screen_border=colors["purple"]
                 ),
                 widget.Prompt(),
-                widget.WindowName(foreground="#96bc74"),
+                widget.WindowName(foreground=colors["purple"]),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -155,41 +173,46 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CPU(foreground="#61afef"),
+                widget.Net(foreground=colors["violet"]),
+                widget.NetGraph(
+                    border_color=colors["violet"],
+                    fill_color="#4A80F4",
+                    graph_color=colors["violet"]
+                ),
+                widget.CPU(foreground=colors["lightblue"]),
                 widget.CPUGraph(
-                    border_color='#61afef',
-                    fill_color='#3398ea',
-                    graph_color='#61afef',
+                    border_color=colors["blue"],
+                    fill_color="#4ABCFF",
+                    graph_color=colors["blue"]
                 ),
-                widget.Memory(measure_mem='G', foreground="#c678dd"),
+                widget.Memory(measure_mem='G', foreground=colors["green"]),
                 widget.MemoryGraph(
-                    border_color='#c678dd',
-                    fill_color='#b54fd3',
-                    graph_color='#c678dd'
+                    border_color=colors["green"],
+                    fill_color="#85C144",
+                    graph_color=colors["green"]
                 ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground="#da676b"),
+                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground=colors["yellow"]),
             ],
-            28,
+            30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            # opacity=0.55,
+            opacity=0.90,
             name="qtilebar",
-            background=["#282c34"],
+            background=["#1a1b26"],
          ),
         ),
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(
-                    font="JetBrains Mono",
-                    foreground="#e5c07b"
-                ),
+                # add distro image, that would be cool
                 widget.GroupBox(
-                    highlight_method='line',
-                    highlight_color=['61afef'],
+                    highlight_method='text',
+                    active="#9aa5ce",
+                    inactive="#414868",
+                    this_current_screen_border=colors["purple"]
                 ),
                 widget.Prompt(),
-                widget.WindowName(foreground="#96bc74"),
+                widget.WindowName(foreground=colors["purple"]),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -198,28 +221,34 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CPU(foreground="#5ca5e0"),
+                widget.Net(foreground=colors["violet"]),
+                widget.NetGraph(
+                    border_color=colors["violet"],
+                    fill_color="#4A80F4",
+                    graph_color=colors["violet"]
+                ),
+                widget.CPU(foreground=colors["lightblue"]),
                 widget.CPUGraph(
-                    border_color='#61afef',
-                    fill_color='#3398ea',
-                    graph_color='#61afef',
+                    border_color=colors["blue"],
+                    fill_color="#4ABCFF",
+                    graph_color=colors["blue"]
                 ),
-                widget.Memory(measure_mem='G', foreground="#ae6bba"),
+                widget.Memory(measure_mem='G', foreground=colors["green"]),
                 widget.MemoryGraph(
-                    border_color='#c678dd',
-                    fill_color='#b54fd3',
-                    graph_color='#c678dd'
+                    border_color=colors["green"],
+                    fill_color="#85C144",
+                    graph_color=colors["green"]
                 ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground="#da676b"),
+                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground=colors["yellow"]),
             ],
-            28,
+            30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            # opacity=0.55,
+            opacity=0.90,
             name="qtilebar",
-            background=["#282c34"],
+            background=["#1a1b26"],
+         ),
         ),
-    ),
 ]
 
 # Drag floating layouts.
@@ -242,6 +271,7 @@ floating_layout = layout.Floating(
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(wm_class="Minecraft"),
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ]
@@ -265,9 +295,9 @@ wl_input_rules = None
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "LG3D"
+wmname = "qtile"
 
 # run shell commands that complete the DE
 os.system('picom -b')
-os.system('feh --bg-scale ~/Pictures/Wallpapers/endyFixed_01.png')
+os.system('feh --bg-scale ~/Pictures/Wallpapers/circuit-tn-single-1080.png')
 os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')

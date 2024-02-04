@@ -40,7 +40,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Documents/org/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -79,5 +79,11 @@
 ;; :q, :wq, :q! and :wq! all switch to dashboard instead of closing emacs
 (evil-ex-define-cmd "q" #'evil-quit)
 
+;; open dashboard bind
+;; this isn't important, i just like having it
 (map! :leader
       "dh" #'+doom-dashboard/open)
+
+;; highlight colors in programming mode and org mode
+(add-hook 'prog-mode-hook 'rainbow-mode)
+(add-hook 'org-mode-hook 'rainbow-mode)

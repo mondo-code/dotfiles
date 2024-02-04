@@ -27,9 +27,11 @@ import os
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
+import colors
 
 mod = "mod4"
 terminal = "alacritty"
+wallpaper_path = "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
 
 # keybinds
 keys = [
@@ -73,7 +75,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn("dmenu_run")),
+    Key([mod], "d", lazy.spawn("dmenu_run -c -l 20")),
     # Custom binds
     # Open Brave
     Key([mod], "b", lazy.spawn("brave")),
@@ -109,27 +111,14 @@ for i in groups:
         ]
     )
 
-# colorscheme: tokyo night
-colors = {
-    "background": "#1a1b26",
-    "monochrome_background": "#24283b",
-    "purple": "#bb9af7",
-    "blue": "#2ac3de",
-    "green": "#9ece6a",
-    "red": "#f7768e",
-    "orange": "#ff9e64",
-    "yellow": "#e0af68",
-    "violet": "#7aa2f7",
-    "lightblue": "#7dcfff",
-    "lighterblue": "#b4f9f8",
-}
+colors = colors.tokyonight
 
 layouts = [
     layout.MonadTall(border_width=2,
-                     border_focus=colors["purple"],
+                     border_focus=colors["window"],
                      margin=12),
     layout.Columns(border_width=2,
-                   border_focus=colors["purple"],
+                   border_focus=colors["window"],
                    margin=12),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -159,12 +148,12 @@ screens = [
                 # add distro image, that would be cool
                 widget.GroupBox(
                     highlight_method='text',
-                    active="#9aa5ce",
-                    inactive="#414868",
-                    this_current_screen_border=colors["purple"]
+                    active=colors["active_group"],
+                    inactive=colors["inactive_group"],
+                    this_current_screen_border=colors["window"],
                 ),
                 widget.Prompt(),
-                widget.WindowName(foreground=colors["purple"]),
+                widget.WindowName(foreground=colors["window"]),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -173,33 +162,24 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Net(foreground=colors["violet"]),
-                widget.NetGraph(
-                    border_color=colors["violet"],
-                    fill_color="#4A80F4",
-                    graph_color=colors["violet"]
-                ),
-                widget.CPU(foreground=colors["lightblue"]),
-                widget.CPUGraph(
-                    border_color=colors["blue"],
-                    fill_color="#4ABCFF",
-                    graph_color=colors["blue"]
-                ),
-                widget.Memory(measure_mem='G', foreground=colors["green"]),
-                widget.MemoryGraph(
-                    border_color=colors["green"],
-                    fill_color="#85C144",
-                    graph_color=colors["green"]
-                ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground=colors["yellow"]),
+                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}"),
+                widget.Spacer(length=16),
+                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz {load_percent}%"),
+                widget.Spacer(length=16),
+                widget.Memory(measure_mem='G', foreground=colors["widget3"], 
+                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
+                widget.Spacer(length=16),
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             opacity=0.90,
             name="qtilebar",
-            background=["#1a1b26"],
+            background=colors["background"],
          ),
+         wallpaper=colors["wallpaper"],
+         wallpaper_mode='fill'
         ),
     Screen(
         top=bar.Bar(
@@ -207,12 +187,12 @@ screens = [
                 # add distro image, that would be cool
                 widget.GroupBox(
                     highlight_method='text',
-                    active="#9aa5ce",
-                    inactive="#414868",
-                    this_current_screen_border=colors["purple"]
+                    active=colors["active_group"],
+                    inactive=colors["inactive_group"],
+                    this_current_screen_border=colors["window"],
                 ),
                 widget.Prompt(),
-                widget.WindowName(foreground=colors["purple"]),
+                widget.WindowName(foreground=colors["window"]),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -221,33 +201,24 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Net(foreground=colors["violet"]),
-                widget.NetGraph(
-                    border_color=colors["violet"],
-                    fill_color="#4A80F4",
-                    graph_color=colors["violet"]
-                ),
-                widget.CPU(foreground=colors["lightblue"]),
-                widget.CPUGraph(
-                    border_color=colors["blue"],
-                    fill_color="#4ABCFF",
-                    graph_color=colors["blue"]
-                ),
-                widget.Memory(measure_mem='G', foreground=colors["green"]),
-                widget.MemoryGraph(
-                    border_color=colors["green"],
-                    fill_color="#85C144",
-                    graph_color=colors["green"]
-                ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M:%S %p", foreground=colors["yellow"]),
+                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}"),
+                widget.Spacer(length=16),
+                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz {load_percent}%"),
+                widget.Spacer(length=16),
+                widget.Memory(measure_mem='G', foreground=colors["widget3"], 
+                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
+                widget.Spacer(length=16),
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             opacity=0.90,
             name="qtilebar",
-            background=["#1a1b26"],
+            background=colors["background"],
          ),
+         wallpaper=colors["wallpaper"],
+         wallpaper_mode='fill'
         ),
 ]
 
@@ -299,5 +270,5 @@ wmname = "qtile"
 
 # run shell commands that complete the DE
 os.system('picom -b')
-os.system('feh --bg-scale ~/Pictures/Wallpapers/circuit-tn-single-1080.png')
+os.system('dunst &')
 os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')

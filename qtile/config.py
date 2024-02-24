@@ -111,7 +111,7 @@ for i in groups:
         ]
     )
 
-colors = colors.tokyonight
+colors = colors.catppuccin_mocha
 
 layouts = [
     layout.MonadTall(border_width=2,
@@ -166,7 +166,7 @@ screens = [
                 widget.Spacer(length=16),
                 widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz {load_percent}%"),
                 widget.Spacer(length=16),
-                widget.Memory(measure_mem='G', foreground=colors["widget3"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
                 widget.Spacer(length=16),
                 widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),
@@ -205,7 +205,7 @@ screens = [
                 widget.Spacer(length=16),
                 widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz {load_percent}%"),
                 widget.Spacer(length=16),
-                widget.Memory(measure_mem='G', foreground=colors["widget3"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
                 widget.Spacer(length=16),
                 widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),

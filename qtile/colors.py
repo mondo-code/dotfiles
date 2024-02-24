@@ -14,15 +14,15 @@ tokyonight = {
     "wallpaper": "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
 }
 
-onedark = {
+doomone = {
     "background": "#282c34",
     "inactive_group": "#3E4451",
     "active_group": "#abb2bf",
-    "window": "#56b6c2",
-    "widget1": "#c678dd",
-    "widget2": "#61afef",
-    "widget3": "#e5c07b",
-    "widget4": "#98c379",
+    "window": "#51afef",
+    "widget1": "#4db5bd",
+    "widget2": "#ecbe7b",
+    "widget3": "#c678dd",
+    "widget4": "#a9a1e1",
     "wallpaper": "~/Pictures/Wallpapers/onedark/endyFixed_01.png",
 }
 
@@ -48,4 +48,16 @@ gruvbox = {
     "widget3": "#458588",
     "widget4": "#b16286",
     "wallpaper": "~/Pictures/Wallpapers/gruvbox/penguin.jpg",
+}
+
+catppuccin_mocha = {
+    "background": "#1e1e2e",
+    "inactive_group": "#6c7086",
+    "active_group": "#cdd6f4",
+    "window": "#89b4fa",
+    "widget1": "#a6e3a1",
+    "widget2": "#f9e2af",
+    "widget3": "#f38ba8",
+    "widget4": "#cba6f7",
+    "wallpaper": "~/Pictures/Wallpapers/catppuccin/shaded_landscape.png",
 }

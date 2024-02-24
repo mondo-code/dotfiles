@@ -32,9 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tokyo-night)
-
-;; This determines the style of line numbers in effect. If set to `nil', line
+(setq doom-theme 'catppuccin)
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
@@ -82,7 +80,7 @@
 ;; open dashboard bind
 ;; this isn't important, i just like having it
 (map! :leader
-      "dh" #'+doom-dashboard/open)
+      "db" 'evil-delete-buffer)
 
 ;; highlight colors in programming mode and org mode
 (add-hook 'prog-mode-hook 'rainbow-mode)

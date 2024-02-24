@@ -1,0 +1,13 @@
+import = ["/home/ray/.config/alacritty/themes/themes/catppuccin.yaml"]
+[font]
+size = 10
+
+[font.normal]
+family = "Hack"
+style = "Regular"
+
+[window]
+opacity = 0.9
+
+[env]
+TERM = "screen-256color-bce"

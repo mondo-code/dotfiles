@@ -30,7 +30,7 @@ from libqtile.lazy import lazy
 import colors
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "st"
 wallpaper_path = "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
 
 # keybinds
@@ -111,7 +111,7 @@ for i in groups:
         ]
     )
 
-colors = colors.catppuccin_mocha
+colors = colors.catppuccin
 
 layouts = [
     layout.MonadTall(border_width=2,

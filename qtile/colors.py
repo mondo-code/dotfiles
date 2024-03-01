@@ -50,7 +50,7 @@ gruvbox = {
     "wallpaper": "~/Pictures/Wallpapers/gruvbox/penguin.jpg",
 }
 
-catppuccin_mocha = {
+catppuccin = {
     "background": "#1e1e2e",
     "inactive_group": "#6c7086",
     "active_group": "#cdd6f4",
@@ -59,5 +59,5 @@ catppuccin_mocha = {
     "widget2": "#f9e2af",
     "widget3": "#f38ba8",
     "widget4": "#cba6f7",
-    "wallpaper": "~/Pictures/Wallpapers/catppuccin/shaded_landscape.png",
+    "wallpaper": "~/Pictures/Wallpapers/catppuccin/arch-black-4k.png",
 }

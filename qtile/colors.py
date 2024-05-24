@@ -50,11 +50,11 @@ gruvbox = {
     "inactive_group": "#3c3836",
     "unfocused_group": "#928374",
     "active_group": "#a89984",
-    "window": "#cc241d",
-    "widget1": "#98971a",
-    "widget2": "#d79921",
-    "widget3": "#458588",
-    "widget4": "#b16286",
+    "window": "#b16286",
+    "widget1": "#689d6a",
+    "widget2": "#458588",
+    "widget3": "#d79921",
+    "widget4": "#cc241d",
     "wallpaper": "~/Pictures/Wallpapers/gruvbox/penguin.jpg",
 }
 

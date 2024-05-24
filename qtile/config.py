@@ -27,11 +27,14 @@ import os
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
+from libqtile import qtile
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
 import colors
 
 mod = "mod4"
-terminal = "st"
-wallpaper_path = "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
+terminal = "st" if qtile.core.name == "x11" else "foot"
+browser = "librewolf"
 
 # keybinds
 keys = [
@@ -76,11 +79,11 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn("dmenu_run -c -l 20")),
-    # Custom binds
-    # Open Brave
-    Key([mod], "b", lazy.spawn("brave")),
+
+    # Open browser
+    Key([mod], "b", lazy.spawn(browser)),
     # screenshot tool
-    Key([mod], "s", lazy.spawn("escrotum -s '~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'")),
+    Key([mod, "shift"], "s", lazy.spawn("escrotum -s '~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'")),
     # doom emacs
     Key([mod], "e", lazy.spawn("emacs")),
 ]
@@ -111,30 +114,62 @@ for i in groups:
         ]
     )
 
-colors = colors.catppuccin
+# multiple color schemes defined in colors.py
+colors = colors.gruvbox
 
 layouts = [
     layout.MonadTall(border_width=2,
                      border_focus=colors["window"],
+                     border_normal=colors["background"],
                      margin=12),
-    layout.Columns(border_width=2,
-                   border_focus=colors["window"],
-                   margin=12),
+    # layout.Columns(border_width=2,
+    #                border_focus=colors["window"],
+    #                border_normal=colors["background"],
+    #                margin=12),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadWide(),
+    # layout.Stack(num_stacks=3,
+    #              border_width=2,
+    #              border_focus=colors["window"],
+    #              border_normal=colors["backgkound"]),
+    # layout.Bsp( border_width=2,
+    #             border_focus=colors["window"],
+    #             border_normal=colors["background"],),
+    layout.Matrix(border_width=2,
+                  border_focus=colors["window"],
+                  border_normal=colors["background"],
+                  margin=12
+                  ),
+    layout.Floating(border_focus=colors["window"],
+                    border_normal=colors["background"],
+                    border_width=2),
+    layout.MonadWide(border_width=2,
+                     border_normal=colors["background"],
+                     border_focus=colors["window"],
+                     margin=12),
     # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
+    layout.Tile(border_width=2,
+                     border_focus=colors["window"],
+                     border_normal=colors["background"],
+                     margin=12),
+    layout.TreeTab(
+            active_bg=colors["window"],
+            font="Hack",
+            fontsize=14,
+            inactive_bg=colors["background"],
+            urgent_bg=colors["widget3"],
+            background=colors["dark_background"],
+            margin=12
+        ),
+    # layout.VerticalTile(border_width=2,
+    #                     border_focus=colors["window"],
+    #                     border_normal=colors["background"],
+    #                     margin=12),
     # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
-    font="Hack",
+    font="Hack Bold",
     fontsize=12,
     padding=8,
 )
@@ -147,10 +182,12 @@ screens = [
             [
                 # add distro image, that would be cool
                 widget.GroupBox(
+                    disable_drag=True,
                     highlight_method='text',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
                     this_current_screen_border=colors["window"],
+                    this_screen_border=colors["inactive_group"]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -162,21 +199,42 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}"),
-                widget.Spacer(length=16),
-                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz ({load_percent}%)"),
-                widget.Spacer(length=16),
-                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
-                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
-                widget.Spacer(length=16),
-                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),
+                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')]),
+                widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
+                                     decorations=[
+                                         PowerLineDecoration(override_colour=colors["widget1"], 
+                                                             override_next_colour=colors["widget2"],
+                                                             path='arrow_right'),
+                                         ]
+                                     ),
+                widget.CPU(foreground=colors["background"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
+                           decorations=[
+                               PowerLineDecoration(override_colour=colors["widget2"], 
+                                                   override_next_colour=colors["widget3"],
+                                                   path='arrow_right')
+                               ]
+                           ),
+                widget.Memory(measure_mem='M', foreground=colors["background"], 
+                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
+                              decorations=[
+                                  PowerLineDecoration(override_colour=colors["widget3"], 
+                                                      override_next_colour=colors["widget4"],
+                                                      path='arrow_right')
+                                  ]
+                              ),
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["background"],
+                             decorations=[
+                                 PowerLineDecoration(override_colour=colors["widget4"], 
+                                                     path='arrow_right')
+                                 ]
+                             ),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             opacity=0.90,
             name="qtilebar",
-            background=colors["background"],
+            background=colors["dark_background"],
          ),
          wallpaper=colors["wallpaper"],
          wallpaper_mode='fill'
@@ -186,10 +244,12 @@ screens = [
             [
                 # add distro image, that would be cool
                 widget.GroupBox(
+                    disable_drag=True,
                     highlight_method='text',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
                     this_current_screen_border=colors["window"],
+                    other_screen_border=colors["inactive_group"]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -201,21 +261,42 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}"),
-                widget.Spacer(length=16),
-                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz ({load_percent}%)"),
-                widget.Spacer(length=16),
-                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
-                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)"),
-                widget.Spacer(length=16),
-                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"]),
+                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')]),
+                widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
+                                     decorations=[
+                                         PowerLineDecoration(override_colour=colors["widget1"], 
+                                                             override_next_colour=colors["widget2"],
+                                                             path='arrow_right'),
+                                         ]
+                                     ),
+                widget.CPU(foreground=colors["background"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
+                           decorations=[
+                               PowerLineDecoration(override_colour=colors["widget2"], 
+                                                   override_next_colour=colors["widget3"],
+                                                   path='arrow_right')
+                               ]
+                           ),
+                widget.Memory(measure_mem='M', foreground=colors["background"], 
+                              format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
+                              decorations=[
+                                  PowerLineDecoration(override_colour=colors["widget3"], 
+                                                      override_next_colour=colors["widget4"],
+                                                      path='arrow_right')
+                                  ]
+                              ),
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["background"],
+                             decorations=[
+                                 PowerLineDecoration(override_colour=colors["widget4"], 
+                                                     path='arrow_right')
+                                 ]
+                             ),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             opacity=0.90,
             name="qtilebar",
-            background=colors["background"],
+            background=colors["dark_background"],
          ),
          wallpaper=colors["wallpaper"],
          wallpaper_mode='fill'
@@ -235,14 +316,17 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+        border_focus=colors["window"],
+        border_normal=colors["background"],
+        border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
+        # same settings from above layout
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(wm_class="Minecraft"),
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ]
@@ -253,7 +337,7 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = True
+auto_minimize = False
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
@@ -269,6 +353,8 @@ wl_input_rules = None
 wmname = "qtile"
 
 # run shell commands that complete the DE
-os.system('picom -b')
+if qtile.core.name == "x11":
+    os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')
+    os.system('picom -b')
+
 os.system('dunst &')
-os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')

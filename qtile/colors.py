@@ -16,11 +16,11 @@ tokyonight = {
     "wallpaper": "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
 }
 
-doomone = {
+onedark = {
     "background": "#282c34",
     "dark_background": "#282c34",
     "inactive_group": "#3E4451",
-    "unfocused_group": "#",
+    "unfocused_group": "#545C6E",
     "active_group": "#abb2bf",
     "window": "#51afef",
     "widget1": "#4db5bd",
@@ -34,7 +34,7 @@ nord = {
     "background": "#2e3440",
     "dark_background": "#2e3440",
     "inactive_group": "#4c556a",
-    "unfocused_group": "#",
+    "unfocused_group": "#616D88",
     "active_group": "#d8dee9",
     "window": "#88c0d0",
     "widget1": "#8fbcbb",
@@ -48,7 +48,7 @@ gruvbox = {
     "background": "#282828",
     "dark_background": "#1d2021",
     "inactive_group": "#3c3836",
-    "unfocused_group": "#928374",
+    "unfocused_group": "#504945",
     "active_group": "#a89984",
     "window": "#b16286",
     "widget1": "#689d6a",
@@ -62,12 +62,12 @@ catppuccin = {
     "background": "#1e1e2e",
     "dark_background": "#1e1e2e",
     "inactive_group": "#6c7086",
-    "unfocused_group": "#",
+    "unfocused_group": "#45475a",
     "active_group": "#cdd6f4",
     "window": "#89b4fa",
-    "widget1": "#a6e3a1",
-    "widget2": "#f9e2af",
+    "widget1": "#f9e2af",
+    "widget2": "#fab387",
     "widget3": "#f38ba8",
     "widget4": "#cba6f7",
-    "wallpaper": "~/Pictures/Wallpapers/catppuccin/9thcm3X.png",
+    "wallpaper": "~/Pictures/Wallpapers/catppuccin/tropic_island_morning.jpg",
 }

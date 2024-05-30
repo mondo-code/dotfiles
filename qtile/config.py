@@ -115,7 +115,7 @@ for i in groups:
     )
 
 # multiple color schemes defined in colors.py
-colors = colors.gruvbox
+colors = colors.catppuccin
 
 layouts = [
     layout.MonadTall(border_width=2,
@@ -161,10 +161,10 @@ layouts = [
             background=colors["dark_background"],
             margin=12
         ),
-    # layout.VerticalTile(border_width=2,
-    #                     border_focus=colors["window"],
-    #                     border_normal=colors["background"],
-    #                     margin=12),
+    layout.VerticalTile(border_width=2,
+                        border_focus=colors["window"],
+                        border_normal=colors["background"],
+                        margin=12),
     # layout.Zoomy(),
 ]
 
@@ -180,14 +180,18 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # add distro image, that would be cool
                 widget.GroupBox(
                     disable_drag=True,
-                    highlight_method='text',
+                    highlight_method='line',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
-                    this_current_screen_border=colors["window"],
-                    this_screen_border=colors["inactive_group"]
+                    this_current_screen_border=colors["background"],
+                    this_screen_border=colors["unfocused_group"],
+                    highlight_color=colors["window"],
+                    decorations=[ PowerLineDecoration(
+                                override_colour=colors["window"],
+                        ) 
+                    ]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -228,6 +232,11 @@ screens = [
                                                      path='arrow_right')
                                  ]
                              ),
+                widget.Spacer(length=3),
+                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                             background=colors["dark_background"],
+                             ),
+                widget.Spacer(length=3),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -242,14 +251,18 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # add distro image, that would be cool
                 widget.GroupBox(
                     disable_drag=True,
-                    highlight_method='text',
+                    highlight_method='line',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
-                    this_current_screen_border=colors["window"],
-                    other_screen_border=colors["inactive_group"]
+                    this_current_screen_border=colors["background"],
+                    this_screen_border=colors["unfocused_group"],
+                    highlight_color=colors["window"],
+                    decorations=[ PowerLineDecoration(
+                                override_colour=colors["window"],
+                        ) 
+                    ]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -290,6 +303,11 @@ screens = [
                                                      path='arrow_right')
                                  ]
                              ),
+                widget.Spacer(length=3),
+                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                             background=colors["dark_background"],
+                             ),
+                widget.Spacer(length=3),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -317,7 +335,7 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
         border_focus=colors["window"],
-        border_normal=colors["background"],
+        border_normal=colors["inactive_group"],
         border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.

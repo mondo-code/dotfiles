@@ -55,7 +55,7 @@ gruvbox = {
     "widget2": "#458588",
     "widget3": "#d79921",
     "widget4": "#cc241d",
-    "wallpaper": "~/Pictures/Wallpapers/gruvbox/penguin.jpg",
+    "wallpaper": "~/Pictures/Wallpapers/gruvbox/dock.png",
 }
 
 catppuccin = {

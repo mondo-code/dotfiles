@@ -115,7 +115,7 @@ for i in groups:
     )
 
 # multiple color schemes defined in colors.py
-colors = colors.catppuccin
+colors = colors.gruvbox
 
 layouts = [
     layout.MonadTall(border_width=2,
@@ -203,7 +203,8 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')]),
+                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')],
+                              length=1),
                 widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
                                      decorations=[
                                          PowerLineDecoration(override_colour=colors["widget1"], 
@@ -274,7 +275,8 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')]),
+                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')],
+                              length=1),
                 widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
                                      decorations=[
                                          PowerLineDecoration(override_colour=colors["widget1"], 

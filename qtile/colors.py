@@ -12,6 +12,7 @@ tokyonight = {
     "widget2": "#7dcfff",             # light blue
     "widget3": "#9ece6a",                 # green
     "widget4": "#e0af68",                # yellow
+    "urgent": "#ff9e64",                # orange
     # "lighterblue": "#b4f9f8",           # lighter blue
     "wallpaper": "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
 }
@@ -27,6 +28,7 @@ onedark = {
     "widget2": "#ecbe7b",
     "widget3": "#c678dd",
     "widget4": "#a9a1e1",
+    "urgent": "",
     "wallpaper": "~/Pictures/Wallpapers/onedark/endyFixed_01.png",
 }
 
@@ -41,6 +43,7 @@ nord = {
     "widget2": "#b48ead",
     "widget3": "#a3be8c",
     "widget4": "#ebcb8b",
+    "urgent": "",
     "wallpaper": "~/Pictures/Wallpapers/nord/mountain_jaws.jpg",
 }
 
@@ -55,6 +58,7 @@ gruvbox = {
     "widget2": "#458588",
     "widget3": "#d79921",
     "widget4": "#cc241d",
+    "urgent": "#fe8019",
     "wallpaper": "~/Pictures/Wallpapers/gruvbox/dock.png",
 }
 
@@ -69,5 +73,6 @@ catppuccin = {
     "widget2": "#fab387",
     "widget3": "#f38ba8",
     "widget4": "#cba6f7",
+    "urgent": "#fe8019",
     "wallpaper": "~/Pictures/Wallpapers/catppuccin/tropic_island_morning.jpg",
 }

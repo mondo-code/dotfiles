@@ -29,7 +29,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
 from libqtile import qtile
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.widget.decorations import PowerLineDecoration, BorderDecoration
 import colors
 
 mod = "mod4"
@@ -89,6 +89,16 @@ keys = [
 ]
 
 groups = [Group(i) for i in "123456789"]
+# there is absolutely a smarter way to do this, but i don't really care
+groups[0].label = "I"
+groups[1].label = "II"
+groups[2].label = "III"
+groups[3].label = "IV"
+groups[4].label = "V"
+groups[5].label = "VI"
+groups[6].label = "VII"
+groups[7].label = "VIII"
+groups[8].label = "IX"
 
 for i in groups:
     keys.extend(
@@ -154,7 +164,6 @@ layouts = [
                      margin=12),
     layout.TreeTab(
             active_bg=colors["window"],
-            font="Hack",
             fontsize=14,
             inactive_bg=colors["background"],
             urgent_bg=colors["widget3"],
@@ -169,7 +178,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Hack Bold",
+    font="JetBrains Mono Bold",
     fontsize=12,
     padding=8,
 )
@@ -180,18 +189,25 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                             background=colors["dark_background"],
+                             ),
+                widget.Spacer(length=3),
                 widget.GroupBox(
                     disable_drag=True,
                     highlight_method='line',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
-                    this_current_screen_border=colors["background"],
+                    this_current_screen_border=colors["window"],
                     this_screen_border=colors["unfocused_group"],
-                    highlight_color=colors["window"],
-                    decorations=[ PowerLineDecoration(
-                                override_colour=colors["window"],
-                        ) 
-                    ]
+                    highlight_color=colors["dark_background"],
+                    urgent_border=colors["urgent"],
+                    urgent_bg=colors["urgent"],
+                    # spacing=2
+                    # decorations=[ PowerLineDecoration(
+                    #             override_colour=colors["window"],
+                    #     ) 
+                    # ]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -203,46 +219,71 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')],
+                widget.Spacer(decorations=[ 
+                                           # PowerLineDecoration(
+                                           #  override_colour=colors["dark_background"], 
+                                           #  override_next_colour=colors["widget1"], 
+                                           #  path='arrow_right')
+                                           ],
                               length=1),
-                widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
+                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}",
                                      decorations=[
-                                         PowerLineDecoration(override_colour=colors["widget1"], 
-                                                             override_next_colour=colors["widget2"],
-                                                             path='arrow_right'),
+                                         BorderDecoration(
+                                             colour=colors["widget1"],
+                                             border_width = [0, 0, 3, 0],
+                                             extrawidth=2,
+                                             padding_x=4
+                                             )
+                                         # PowerLineDecoration(override_colour=colors["widget1"], 
+                                         #                     override_next_colour=colors["widget2"],
+                                         #                     path='arrow_right'),
+
                                          ]
                                      ),
-                widget.CPU(foreground=colors["background"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
+                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
                            decorations=[
-                               PowerLineDecoration(override_colour=colors["widget2"], 
-                                                   override_next_colour=colors["widget3"],
-                                                   path='arrow_right')
+                               BorderDecoration(
+                                   colour=colors["widget2"],
+                                   border_width = [0, 0, 3, 0],
+                                   extrawidth=2,
+                                   padding_x=4
+                                   )
+                               # PowerLineDecoration(override_colour=colors["widget2"], 
+                               #                     override_next_colour=colors["widget3"],
+                               #                     path='arrow_right')
                                ]
                            ),
-                widget.Memory(measure_mem='M', foreground=colors["background"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
                               decorations=[
-                                  PowerLineDecoration(override_colour=colors["widget3"], 
-                                                      override_next_colour=colors["widget4"],
-                                                      path='arrow_right')
+                                  BorderDecoration(
+                                      colour=colors["widget3"],
+                                      border_width = [0, 0, 3, 0],
+                                      extrawidth=2,
+                                      padding_x=4
+                                      )
+                                  # PowerLineDecoration(override_colour=colors["widget3"], 
+                                  #                     override_next_colour=colors["widget4"],
+                                  #                     path='arrow_right')
                                   ]
                               ),
-                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["background"],
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"],
                              decorations=[
-                                 PowerLineDecoration(override_colour=colors["widget4"], 
-                                                     path='arrow_right')
+                                  BorderDecoration(
+                                      colour=colors["widget4"],
+                                      border_width = [0, 0, 3, 0],
+                                      extrawidth=2,
+                                      padding_x=4
+                                      )
+                                 # PowerLineDecoration(override_colour=colors["widget4"], 
+                                 #                     path='arrow_right')
                                  ]
                              ),
-                widget.Spacer(length=3),
-                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
-                             background=colors["dark_background"],
-                             ),
-                widget.Spacer(length=3),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            opacity=0.90,
+            opacity=1.0,
             name="qtilebar",
             background=colors["dark_background"],
          ),
@@ -252,18 +293,25 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                             background=colors["dark_background"],
+                             ),
+                widget.Spacer(length=3),
                 widget.GroupBox(
                     disable_drag=True,
                     highlight_method='line',
                     active=colors["active_group"],
                     inactive=colors["inactive_group"],
-                    this_current_screen_border=colors["background"],
+                    this_current_screen_border=colors["window"],
                     this_screen_border=colors["unfocused_group"],
-                    highlight_color=colors["window"],
-                    decorations=[ PowerLineDecoration(
-                                override_colour=colors["window"],
-                        ) 
-                    ]
+                    highlight_color=colors["dark_background"],
+                    urgent_border=colors["urgent"],
+                    urgent_bg=colors["urgent"],
+                    # spacing=2
+                    # decorations=[ PowerLineDecoration(
+                    #             override_colour=colors["window"],
+                    #     ) 
+                    # ]
                 ),
                 widget.Prompt(),
                 widget.WindowName(foreground=colors["window"]),
@@ -275,46 +323,71 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[PowerLineDecoration(override_colour=colors["dark_background"], override_next_colour=colors["widget1"], path='arrow_right')],
+                widget.Spacer(decorations=[ 
+                                           # PowerLineDecoration(
+                                           #  override_colour=colors["dark_background"], 
+                                           #  override_next_colour=colors["widget1"], 
+                                           #  path='arrow_right')
+                                           ],
                               length=1),
-                widget.CurrentLayout(foreground=colors["background"], fmt="╬ {}",
+                widget.CurrentLayout(foreground=colors["widget1"], fmt="╬ {}",
                                      decorations=[
-                                         PowerLineDecoration(override_colour=colors["widget1"], 
-                                                             override_next_colour=colors["widget2"],
-                                                             path='arrow_right'),
+                                         BorderDecoration(
+                                             colour=colors["widget1"],
+                                             border_width = [0, 0, 3, 0],
+                                             extrawidth=2,
+                                             padding_x=4
+                                             )
+                                         # PowerLineDecoration(override_colour=colors["widget1"], 
+                                         #                     override_next_colour=colors["widget2"],
+                                         #                     path='arrow_right'),
+
                                          ]
                                      ),
-                widget.CPU(foreground=colors["background"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
+                widget.CPU(foreground=colors["widget2"], format = "■ CPU: {freq_current}GHz ({load_percent}%)",
                            decorations=[
-                               PowerLineDecoration(override_colour=colors["widget2"], 
-                                                   override_next_colour=colors["widget3"],
-                                                   path='arrow_right')
+                               BorderDecoration(
+                                   colour=colors["widget2"],
+                                   border_width = [0, 0, 3, 0],
+                                   extrawidth=2,
+                                   padding_x=4
+                                   )
+                               # PowerLineDecoration(override_colour=colors["widget2"], 
+                               #                     override_next_colour=colors["widget3"],
+                               #                     path='arrow_right')
                                ]
                            ),
-                widget.Memory(measure_mem='M', foreground=colors["background"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
                               decorations=[
-                                  PowerLineDecoration(override_colour=colors["widget3"], 
-                                                      override_next_colour=colors["widget4"],
-                                                      path='arrow_right')
+                                  BorderDecoration(
+                                      colour=colors["widget3"],
+                                      border_width = [0, 0, 3, 0],
+                                      extrawidth=2,
+                                      padding_x=4
+                                      )
+                                  # PowerLineDecoration(override_colour=colors["widget3"], 
+                                  #                     override_next_colour=colors["widget4"],
+                                  #                     path='arrow_right')
                                   ]
                               ),
-                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["background"],
+                widget.Clock(format="● %Y-%m-%d %a %I:%M:%S %p", foreground=colors["widget4"],
                              decorations=[
-                                 PowerLineDecoration(override_colour=colors["widget4"], 
-                                                     path='arrow_right')
+                                  BorderDecoration(
+                                      colour=colors["widget4"],
+                                      border_width = [0, 0, 3, 0],
+                                      extrawidth=2,
+                                      padding_x=4
+                                      )
+                                 # PowerLineDecoration(override_colour=colors["widget4"], 
+                                 #                     path='arrow_right')
                                  ]
                              ),
-                widget.Spacer(length=3),
-                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
-                             background=colors["dark_background"],
-                             ),
-                widget.Spacer(length=3),
             ],
             30,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            opacity=0.90,
+            opacity=1.0,
             name="qtilebar",
             background=colors["dark_background"],
          ),

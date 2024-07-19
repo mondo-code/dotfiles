@@ -1,3 +1,14 @@
+import os
+import random
+
+home = os.path.expanduser("~")
+
+tokyonight_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/tokyonight")
+onedark_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/onedark")
+nord_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/nord")
+gruvbox_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/gruvbox")
+catppuccin_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/catppuccin")
+
 tokyonight = {
     "background": "#1a1b26",
     "dark_background": "#1a1b26",
@@ -14,7 +25,7 @@ tokyonight = {
     "widget4": "#e0af68",                # yellow
     "urgent": "#ff9e64",                # orange
     # "lighterblue": "#b4f9f8",           # lighter blue
-    "wallpaper": "~/Pictures/Wallpapers/tokyonight/fractal-tnz2.png"
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/tokyonight/{random.choice(tokyonight_wallpapers)}"
 }
 
 onedark = {
@@ -29,7 +40,7 @@ onedark = {
     "widget3": "#c678dd",
     "widget4": "#a9a1e1",
     "urgent": "",
-    "wallpaper": "~/Pictures/Wallpapers/onedark/endyFixed_01.png",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/onedark/{random.choice(onedark_wallpapers)}"
 }
 
 nord = {
@@ -44,7 +55,7 @@ nord = {
     "widget3": "#a3be8c",
     "widget4": "#ebcb8b",
     "urgent": "",
-    "wallpaper": "~/Pictures/Wallpapers/nord/mountain_jaws.jpg",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/nord/{random.choice(nord_wallpapers)}"
 }
 
 gruvbox = {
@@ -59,7 +70,7 @@ gruvbox = {
     "widget3": "#d79921",
     "widget4": "#cc241d",
     "urgent": "#fe8019",
-    "wallpaper": "~/Pictures/Wallpapers/gruvbox/dock.png",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/gruvbox/{random.choice(gruvbox_wallpapers)}"
 }
 
 catppuccin = {
@@ -74,5 +85,5 @@ catppuccin = {
     "widget3": "#f38ba8",
     "widget4": "#cba6f7",
     "urgent": "#fe8019",
-    "wallpaper": "~/Pictures/Wallpapers/catppuccin/tropic_island_morning.jpg",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/catppuccin/{random.choice(catppuccin_wallpapers)}"
 }

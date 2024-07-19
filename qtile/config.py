@@ -191,7 +191,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                widget.Image(filename="~/.config/qtile/Icons/archlinux-logo.png", 
                              background=colors["dark_background"],
                              ),
                 widget.Spacer(length=3),

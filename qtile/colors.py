@@ -8,6 +8,8 @@ onedark_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/onedark")
 nord_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/nord")
 gruvbox_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/gruvbox")
 catppuccin_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/catppuccin")
+dracula_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/dracula")
+moonfly_wallpapers = os.listdir(f"{home}/.config/qtile/Wallpapers/moonfly")
 
 tokyonight = {
     "background": "#1a1b26",
@@ -34,12 +36,12 @@ onedark = {
     "inactive_group": "#3E4451",
     "unfocused_group": "#545C6E",
     "active_group": "#abb2bf",
-    "window": "#51afef",
-    "widget1": "#4db5bd",
-    "widget2": "#ecbe7b",
-    "widget3": "#c678dd",
-    "widget4": "#a9a1e1",
-    "urgent": "",
+    "window": "#61afef",
+    "widget1": "#e06c75",
+    "widget2": "#98c379",
+    "widget3": "#e5c07b",
+    "widget4": "#c678dd",
+    "urgent": "#56b6c2",
     "wallpaper": f"{home}/.config/qtile/Wallpapers/onedark/{random.choice(onedark_wallpapers)}"
 }
 
@@ -86,4 +88,34 @@ catppuccin = {
     "widget4": "#cba6f7",
     "urgent": "#fe8019",
     "wallpaper": f"{home}/.config/qtile/Wallpapers/catppuccin/{random.choice(catppuccin_wallpapers)}"
+}
+
+dracula = {
+    "background": "#282a36",
+    "dark_background": "#282a36",
+    "inactive_group": "#44475a",
+    "unfocused_group": "#45475a",
+    "active_group": "#6272a4",
+    "window": "#ff5555",
+    "widget1": "#8be9fd",
+    "widget2": "#50fa7b",
+    "widget3": "#ffb86c",
+    "widget4": "#bd93f9",
+    "urgent": "#f1fa8c",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/dracula/{random.choice(dracula_wallpapers)}"
+}
+
+moonfly = {
+    "background": "#080808",
+    "dark_background": "#080808",
+    "inactive_group": "#2f2f2f",
+    "unfocused_group": "#1b1b1b",
+    "active_group": "#b2b2b2",
+    "window": "#80a0ff",
+    "widget1": "#ff5454",
+    "widget2": "#8cc85f",
+    "widget3": "#e3c78a",
+    "widget4": "#cf87e8",
+    "urgent": "#f09479",
+    "wallpaper": f"{home}/.config/qtile/Wallpapers/moonfly/{random.choice(moonfly_wallpapers)}"
 }

@@ -24,6 +24,7 @@
 # SOFTWARE.
 
 import os
+import subprocess
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
 from libqtile.lazy import lazy
@@ -33,7 +34,7 @@ from qtile_extras.widget.decorations import PowerLineDecoration, BorderDecoratio
 import colors
 
 mod = "mod4"
-terminal = "st" if qtile.core.name == "x11" else "foot"
+terminal = "alacritty"
 browser = "librewolf"
 
 # keybinds
@@ -80,7 +81,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawn("dmenu_run -c -l 20")),
+    Key([mod], "d", lazy.spawn("rofi -show drun")),
 
     # Open browser
     Key([mod], "b", lazy.spawn(browser)),
@@ -90,7 +91,7 @@ keys = [
     Key([mod], "e", lazy.spawn("emacs")),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234567890"]
 # there is absolutely a smarter way to do this, but i don't really care
 groups[0].label = "I"
 groups[1].label = "II"
@@ -101,6 +102,7 @@ groups[5].label = "VI"
 groups[6].label = "VII"
 groups[7].label = "VIII"
 groups[8].label = "IX"
+groups[9].label = "X"
 
 for i in groups:
     keys.extend(
@@ -194,6 +196,8 @@ screens = [
                 widget.Image(filename="~/.config/qtile/Icons/archlinux-logo.png", 
                              background=colors["dark_background"],
                              ),
+                # widget.LaunchBar(default_icon="~/.config/qtile/Icons/archlinux-logo.png",
+                #                  progs=[('rofi', 'rofi -show drun')])
                 widget.Spacer(length=3),
                 widget.GroupBox(
                     disable_drag=True,
@@ -221,10 +225,10 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[ 
+                widget.Spacer(decorations=[
                                            # PowerLineDecoration(
-                                           #  override_colour=colors["dark_background"], 
-                                           #  override_next_colour=colors["widget1"], 
+                                           #  override_colour=colors["dark_background"],
+                                           #  override_next_colour=colors["widget1"],
                                            #  path='arrow_right')
                                            ],
                               length=1),
@@ -236,7 +240,7 @@ screens = [
                                              extrawidth=2,
                                              padding_x=4
                                              )
-                                         # PowerLineDecoration(override_colour=colors["widget1"], 
+                                         # PowerLineDecoration(override_colour=colors["widget1"],
                                          #                     override_next_colour=colors["widget2"],
                                          #                     path='arrow_right'),
 
@@ -250,12 +254,12 @@ screens = [
                                    extrawidth=2,
                                    padding_x=4
                                    )
-                               # PowerLineDecoration(override_colour=colors["widget2"], 
+                               # PowerLineDecoration(override_colour=colors["widget2"],
                                #                     override_next_colour=colors["widget3"],
                                #                     path='arrow_right')
                                ]
                            ),
-                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"],
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
                               decorations=[
                                   BorderDecoration(
@@ -264,7 +268,7 @@ screens = [
                                       extrawidth=2,
                                       padding_x=4
                                       )
-                                  # PowerLineDecoration(override_colour=colors["widget3"], 
+                                  # PowerLineDecoration(override_colour=colors["widget3"],
                                   #                     override_next_colour=colors["widget4"],
                                   #                     path='arrow_right')
                                   ]
@@ -295,9 +299,11 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(filename="~/Pictures/Icons/archlinux-logo-white.png", 
+                widget.Image(filename="~/.config/qtile/Icons/archlinux-logo.png",
                              background=colors["dark_background"],
                              ),
+                # widget.LaunchBar(default_icon="~/.config/qtile/Icons/archlinux-logo.png",
+                #                  progs=[('rofi', 'rofi -show drun')])
                 widget.Spacer(length=3),
                 widget.GroupBox(
                     disable_drag=True,
@@ -312,7 +318,7 @@ screens = [
                     # spacing=2
                     # decorations=[ PowerLineDecoration(
                     #             override_colour=colors["window"],
-                    #     ) 
+                    #     )
                     # ]
                 ),
                 widget.Prompt(),
@@ -325,10 +331,10 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Spacer(decorations=[ 
+                widget.Spacer(decorations=[
                                            # PowerLineDecoration(
-                                           #  override_colour=colors["dark_background"], 
-                                           #  override_next_colour=colors["widget1"], 
+                                           #  override_colour=colors["dark_background"],
+                                           #  override_next_colour=colors["widget1"],
                                            #  path='arrow_right')
                                            ],
                               length=1),
@@ -340,7 +346,7 @@ screens = [
                                              extrawidth=2,
                                              padding_x=4
                                              )
-                                         # PowerLineDecoration(override_colour=colors["widget1"], 
+                                         # PowerLineDecoration(override_colour=colors["widget1"],
                                          #                     override_next_colour=colors["widget2"],
                                          #                     path='arrow_right'),
 
@@ -354,12 +360,12 @@ screens = [
                                    extrawidth=2,
                                    padding_x=4
                                    )
-                               # PowerLineDecoration(override_colour=colors["widget2"], 
+                               # PowerLineDecoration(override_colour=colors["widget2"],
                                #                     override_next_colour=colors["widget3"],
                                #                     path='arrow_right')
                                ]
                            ),
-                widget.Memory(measure_mem='M', foreground=colors["widget3"], 
+                widget.Memory(measure_mem='M', foreground=colors["widget3"],
                               format="☰ RAM:{MemUsed: .0f}{mm} /{MemTotal: .0f}{mm} ({MemPercent}%)",
                               decorations=[
                                   BorderDecoration(
@@ -368,7 +374,7 @@ screens = [
                                       extrawidth=2,
                                       padding_x=4
                                       )
-                                  # PowerLineDecoration(override_colour=colors["widget3"], 
+                                  # PowerLineDecoration(override_colour=colors["widget3"],
                                   #                     override_next_colour=colors["widget4"],
                                   #                     path='arrow_right')
                                   ]
@@ -381,7 +387,7 @@ screens = [
                                       extrawidth=2,
                                       padding_x=4
                                       )
-                                 # PowerLineDecoration(override_colour=colors["widget4"], 
+                                 # PowerLineDecoration(override_colour=colors["widget4"],
                                  #                     path='arrow_right')
                                  ]
                              ),
@@ -448,8 +454,13 @@ wl_input_rules = None
 wmname = "qtile"
 
 # run shell commands that complete the DE
-if qtile.core.name == "x11":
-    os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')
-    os.system('picom -b')
+# some of this is specific to my system, like the display command and the wayland
+# display script, so I'm leaving this commented
+# if qtile.core.name == "x11":
+#     os.system('xrandr --output DP-0 --mode 1920x1080 --rate 144 --left-of HDMI-0')
+#     os.system('picom -b')
+# if qtile.core.name == "wayland":
+#     home = os.path.expanduser("~")
+#     subprocess.Popen(["wlmonitorsetup"])
 
 os.system('dunst &')

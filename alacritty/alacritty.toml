@@ -1,0 +1,11 @@
+import = [
+	# I put a themes repo in my alacritty directory, from
+	# https://github.com/alacritty/alacritty-theme
+	"~/.config/alacritty/themes/themes/gruvbox_material_hard_dark.toml"
+]
+
+[env]
+TERM = "screen-256color"
+
+[window]
+opacity = 1.0

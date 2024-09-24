@@ -26,22 +26,53 @@ require("lazy").setup({
 		end
 	},
 	'xiyaowong/transparent.nvim',
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
+	'williamboman/mason.nvim',
+	'williamboman/mason-lspconfig.nvim',
 	'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-buffer',
 	'hrsh7th/cmp-path',
 	'hrsh7th/cmp-cmdline',
 	'hrsh7th/nvim-cmp',
-	'L3MON4D3/luasnip'
+	'L3MON4D3/luasnip',
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
+	'Mofiqul/dracula.nvim',
+	'navarasu/onedark.nvim',
+	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+	{
+		'nvimdev/dashboard-nvim',
+		event = 'VimEnter',
+		config = function()
+			require('dashboard').setup {
+			}
+		end,
+		dependencies = { {'nvim-tree/nvim-web-devicons'}}
+	},
+	'VonHeikemen/lsp-zero.nvim',
+	'andweeb/presence.nvim',
 })
 
-vim.cmd[[colorscheme tokyonight]]
+require('mason').setup()
+require('mason-lspconfig').setup()
+require('lsp-zero')
+require('lspconfig').pylsp.setup({})
+require('lspconfig').clangd.setup({})
+require('lspconfig').rust_analyzer.setup({})
+
+-- copy binds
+-- i know this is lazy but i don't care
+vim.cmd[[vnoremap <leader>y "+y]]
+vim.cmd[[nnoremap <leader>Y "+yg_]]
+vim.cmd[[nnoremap <leader>y "+y]]
+vim.cmd[[nnoremap <leader>yy "+yy]]
+
+-- paste binds
+vim.cmd[[nnoremap <leader>p "+p]]
+vim.cmd[[nnoremap <leader>P "+P]]
+vim.cmd[[vnoremap <leader>p "+p]]
+vim.cmd[[vnoremap <leader>P "+P]]
+
 -- general vim options
 vim.opt.guicursor = ""
 vim.opt.nu = true

@@ -1,0 +1,15 @@
+{
+	"modules": [
+		"title",
+		"os",
+		"packages",
+		"terminal",
+		"shell",
+		"kernel",
+		"uptime",
+		"wm",
+	],
+	"logo": {
+		"type": "small"
+	}
+}

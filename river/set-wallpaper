@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# choose a random wallpaper
-WALLPAPER=$(find "$HOME/Pictures/Wallpapers/gruvbox" -type f | shuf -n 1)
-swaybg -i "$WALLPAPER" -m fill &

@@ -1,0 +1,49 @@
+* {
+	font-size: 14px;
+	font-family: JetBrains Mono;
+}
+
+window#waybar {
+	background: #1d2021;
+	color: #fbf1c7;
+}
+
+#tags button {
+	padding: 0 4px;
+	color: #3c3836;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #7c6f64;
+	border: #7c6f64;
+	padding: 0 4px;
+}
+#tags button.occupied {
+	color: #ebdbb2;
+}
+#tags button.focused {
+	color: #b16286;
+}
+#tags button.urgent {
+	color: #fe8019;
+}
+
+#memory {
+	color: #458588;
+}
+#cpu {
+	color: #d79921;
+}
+#clock {
+	color: #cc241d;
+}
+
+#clock,
+#memory,
+#cpu 
+#date {
+	padding: 0 15px;
+}

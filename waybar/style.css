@@ -4,12 +4,16 @@
 }
 
 window#waybar {
-	background: #1d2021;
+	background: #282828;
 	color: #fbf1c7;
 }
 
+#tags {
+	background: #1d2021;
+}
+
 #tags button {
-	padding: 0 4px;
+	padding: 0 6px;
 	color: #3c3836;
 }
 #tags button:hover {
@@ -19,7 +23,7 @@ window#waybar {
 #tags button:hover {
 	background: #7c6f64;
 	border: #7c6f64;
-	padding: 0 4px;
+	padding: 0 6px;
 }
 #tags button.occupied {
 	color: #ebdbb2;
@@ -31,19 +35,52 @@ window#waybar {
 	color: #fe8019;
 }
 
-#memory {
+#custom-right-arrow-dark {
+	color: #1d2021;
+	font-size: 20px;
+}
+#custom-left-arrow-light {
+	color: #282828;
+	font-size: 20px;
+}
+#custom-left-arrow-widget1 {
+	color: #689d6a;
+	font-size: 20px;
+}
+#custom-left-arrow-widget2 {
 	color: #458588;
+	font-size: 20px;
+}
+#custom-left-arrow-widget3 {
+	color: #d79921;
+	font-size: 20px;
+}
+#custom-left-arrow-widget4 {
+	color: #cc241d;
+	font-size: 20px;
+}
+
+#memory {
+	color: #1d2021;
+	background: #689d6a;
 }
 #cpu {
-	color: #d79921;
+	color: #1d2021;
+	background: #458588;
+}
+#battery {
+	color: #1d2021;
+	background: #d79921;
 }
 #clock {
-	color: #cc241d;
+	color: #1d2021;
+	background: #cc241d;
 }
 
 #clock,
 #memory,
-#cpu 
+#cpu, 
+#battery,
 #date {
-	padding: 0 15px;
+	padding: 0 10px;
 }

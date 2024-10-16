@@ -6,14 +6,19 @@
 
 	"modules-left": [
 		"river/tags",
+		"custom/right-arrow-dark"
 	],
 	"modules-center": [
 		"river/window",
 	],
 	"modules-right": [
+		"custom/left-arrow-widget1",
 		"memory",
+		"custom/left-arrow-widget2",
 		"cpu",
+		"custom/left-arrow-widget3",
 		"battery",
+		"custom/left-arrow-widget4",
 		"clock",
 	],
 
@@ -35,18 +40,47 @@
 	"river/window": {
 		"format": "{}"
 	},
+	
+	"custom/left-arrow-widget1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-widget2": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-widget3": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-widget4": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
 
 	"clock": {
-		"format": "🕒 {:%a %m-%d %H:%M}",
+		"format": "{:%a %m-%d %H:%M}",
 		"tooltip": false
 	},
 
 	"memory": {
 		"interval": 5,
-		"format": "💾 Mem {used:0.1f}G / {total:0.1f}G"
+		"format": "MEM: {used:0.1f}G / {total:0.1f}G"
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "⚙️ CPU {usage:2}%"
+		"format": "CPU: {usage:2}%"
 	},
+	"battery": {
+		"interval:": 5,
+		"format": "BAT: {capacity}%"
+	}
 }

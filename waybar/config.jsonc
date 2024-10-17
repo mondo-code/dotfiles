@@ -5,20 +5,28 @@
 	"position": "top",
 
 	"modules-left": [
+		"custom/separator#1",
+		"image",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
 		"river/tags",
-		"custom/right-arrow-dark"
-	],
-	"modules-center": [
+		"custom/right-arrow-dark",
+		"custom/separator#2",
 		"river/window",
 	],
+	"modules-center": [
+	],
 	"modules-right": [
-		"custom/left-arrow-widget1",
+		"custom/left-arrow-dark",
+		"user",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"memory",
-		"custom/left-arrow-widget2",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"cpu",
-		"custom/left-arrow-widget3",
-		"battery",
-		"custom/left-arrow-widget4",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"clock",
 	],
 
@@ -41,23 +49,39 @@
 		"format": "{}"
 	},
 	
-	"custom/left-arrow-widget1": {
-		"format": "",
+	//"custom/left-arrow-widget1": {
+	//	"format": "",
+	//	"tooltip": false
+	//},
+	//"custom/left-arrow-widget2": {
+	//	"format": "",
+	//	"tooltip": false
+	//},
+	//"custom/left-arrow-widget3": {
+	//	"format": "",
+	//	"tooltip": false
+	//},
+	//"custom/left-arrow-widget4": {
+	//	"format": "",
+	//	"tooltip": false
+	//},
+	"user": {
+		"format": "UP: {work_d}:{work_H}:{work_M}",
+		"interval": 60
+	},
+	"custom/separator#1": {
+		"format": " ",
 		"tooltip": false
 	},
-	"custom/left-arrow-widget2": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-widget3": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-widget4": {
-		"format": "",
+	"custom/separator#2": {
+		"format": " ",
 		"tooltip": false
 	},
 	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark": {
 		"format": "",
 		"tooltip": false
 	},
@@ -65,9 +89,18 @@
 		"format": "",
 		"tooltip": false
 	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
+		"on-click": "rofi -show drun",
+		"size": 22
+	},
 
 	"clock": {
-		"format": "{:%a %m-%d %H:%M}",
+		"format": "{:%a %m-%d-%y %I:%M %p}",
 		"tooltip": false
 	},
 
@@ -77,8 +110,9 @@
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "CPU: {usage:2}%"
+		"format": "CPU:{usage:2}%"
 	},
+	// this is here in case of running this on a laptop
 	"battery": {
 		"interval:": 5,
 		"format": "BAT: {capacity}%"

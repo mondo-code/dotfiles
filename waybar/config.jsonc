@@ -11,6 +11,9 @@
 		"custom/right-arrow-light",
 		"river/tags",
 		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/layout",
+		"custom/right-arrow-dark",
 		"custom/separator#2",
 		"river/window",
 	],
@@ -49,22 +52,6 @@
 		"format": "{}"
 	},
 	
-	//"custom/left-arrow-widget1": {
-	//	"format": "",
-	//	"tooltip": false
-	//},
-	//"custom/left-arrow-widget2": {
-	//	"format": "",
-	//	"tooltip": false
-	//},
-	//"custom/left-arrow-widget3": {
-	//	"format": "",
-	//	"tooltip": false
-	//},
-	//"custom/left-arrow-widget4": {
-	//	"format": "",
-	//	"tooltip": false
-	//},
 	"user": {
 		"format": "UP: {work_d}:{work_H}:{work_M}",
 		"interval": 60

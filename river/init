@@ -144,8 +144,10 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x282828
-riverctl border-color-focused 0xb16286
+# gruvbox: 0x282828, 0xb16286
+# vscode: 0x1e1e1e, 0x0a7aca
+riverctl background-color 0x1e1e1e
+riverctl border-color-focused 0x0a7aca
 riverctl border-color-unfocused 0x928374
 
 # Set keyboard repeat rate
@@ -173,8 +175,8 @@ wideriver \
 	--inner-gaps					6			\
 	--outer-gaps					6			\
 	--border-width-monocle			2			\
-	--border-color-focused			0xb16286	\
-	--border-color-focused-monocle	0xb16286	\
+	--border-color-focused			0x0a7aca	\
+	--border-color-focused-monocle	0x0a7aca	\
 	--border-color-unfocused		0x928374	&
 
 # necessary programs

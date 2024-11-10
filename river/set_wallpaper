@@ -1,4 +1,4 @@
 #!/bin/sh
 
-WALLPAPER=$(find "$HOME/Pictures/Wallpapers/gruvbox" -type f | shuf -n 1)
+WALLPAPER=$(find "$HOME/Pictures/Wallpapers" -type f | shuf -n 1)
 swaybg -i "$WALLPAPER" -m fill &

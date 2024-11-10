@@ -21,7 +21,7 @@
 	],
 	"modules-right": [
 		"custom/left-arrow-dark",
-		"user",
+		"battery",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"memory",
@@ -49,7 +49,8 @@
 	},
 
 	"river/window": {
-		"format": "{}"
+		"format": "{}",
+		"max_length": 300,
 	},
 	
 	"user": {
@@ -101,7 +102,18 @@
 	},
 	// this is here in case of running this on a laptop
 	"battery": {
-		"interval:": 5,
-		"format": "BAT: {capacity}%"
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
 	}
 }

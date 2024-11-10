@@ -1,0 +1,108 @@
+* {
+	font-size: 14px;
+	font-family: JetBrains Mono;
+}
+
+window#waybar {
+	background: #282828;
+	color: #b16286;
+}
+
+#tags {
+	background: #1d2021;
+}
+#tags button {
+	padding: 0 6px;
+	color: #3c3836;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #7c6f64;
+	border: #7c6f64;
+	padding: 0 6px;
+}
+#tags button.occupied {
+	color: #ebdbb2;
+}
+#tags button.focused {
+	color: #b16286;
+}
+#tags button.urgent {
+	color: #fe8019;
+}
+
+#layout {
+	background: #1d2021;
+}
+
+#custom-separator.1 {
+	color: #1d2021;
+	background: #1d2021;
+	font-size: 8px;
+}
+#custom-separator.2 {
+	color: #282828;
+	background: #282828;
+	font-size: 14px;
+}
+
+#custom-left-arrow-dark,
+#custom-right-arrow-dark {
+	color: #1d2021;
+	font-size: 20px;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: #282828;
+	font-size: 20px;
+	background: #1d2021;
+}
+/*#custom-left-arrow-widget1 {*/
+/*	color: #689d6a;*/
+/*	font-size: 20px;*/
+/*}*/
+/*#custom-left-arrow-widget2 {*/
+/*	color: #458588;*/
+/*	font-size: 20px;*/
+/*}*/
+/*#custom-left-arrow-widget3 {*/
+/*	color: #d79921;*/
+/*	font-size: 20px;*/
+/*}*/
+/*#custom-left-arrow-widget4 {*/
+/*	color: #cc241d;*/
+/*	font-size: 20px;*/
+/*}*/
+
+#battery {
+	color: #689d6a;
+	background: #1d2021;
+}
+#memory {
+	color: #458588;
+	background: #1d2021;
+}
+#cpu {
+	color: #d79921;
+	background: #1d2021;
+}
+#clock {
+	color: #cc241d;
+	background: #1d2021;
+}
+#image {
+	background: #1d2021;
+}
+
+#user,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date 
+#image {
+	padding: 0 10px;
+}

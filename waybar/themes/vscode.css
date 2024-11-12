@@ -4,80 +4,80 @@
 }
 
 window#waybar {
-	background: #282c34;
-	color: #61afef;
+	background: #262626;
+	color: #0a7aca;
 }
 
 #tags {
-	background: #1C1F25;
+	background: #1e1e1e;
 }
 #tags button {
 	padding: 0 6px;
-	color: #3e4451;
+	color: #373737;
 }
 #tags button:hover {
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 #tags button:hover {
-	background: #8E97A9;
-	border: #8E97A9;
+	background: #373737;
+	border: #373737;
 	padding: 0 6px;
 }
 #tags button.occupied {
-	color: #abb2bf;
+	color: #e1e1e1;
 }
 #tags button.focused {
-	color: #61afef;
+	color: #0a7aca;
 }
 #tags button.urgent {
-	color: #56b6c2;
+	color: #ce492e;
 }
 
 #layout {
-	background: #1C1F25;
+	background: #1e1e1e;
 }
 
 #custom-separator.1 {
-	color: #1C1F25;
-	background: #1C1F25;
+	color: #1e1e1e;
+	background: #1e1e1e;
 	font-size: 8px;
 }
 #custom-separator.2 {
-	color: #282c34;
-	background: #282c34;
+	color: #262626;
+	background: #262626;
 	font-size: 14px;
 }
 
 #custom-left-arrow-dark,
 #custom-right-arrow-dark {
-	color: #1C1F25;
+	color: #1e1e1e;
 	font-size: 20px;
 }
 #custom-right-arrow-light,
 #custom-left-arrow-light {
-	color: #282c34;
+	color: #262626;
 	font-size: 20px;
-	background: #1C1F25;
+	background: #1e1e1e;
 }
-#user {
-	color: #e06c75;
-	background: #1c1f25;
+#battery {
+	color: #4bbea7;
+	background: #1e1e1e;
 }
 #memory {
-	color: #98c379;
-	background: #1c1f25;
+	color: #569cd6;
+	background: #1e1e1e;
 }
 #cpu {
-	color: #e5c07b;
-	background: #1c1f25;
+	color: #cdcd9f;
+	background: #1e1e1e;
 }
 #clock {
-	color: #c678dd;
-	background: #1c1f25;
+	color: #ce9178;
+	background: #1e1e1e;
 }
 #image {
-	background: #1c1f25;
+	background: #1e1e1e;
 }
 
 #user,

@@ -144,11 +144,11 @@ do
 done
 
 # Set background and border color
-# gruvbox: 0x282828, 0xb16286
-# vscode: 0x1e1e1e, 0x0a7aca
-riverctl background-color 0x1e1e1e
-riverctl border-color-focused 0x0a7aca
-riverctl border-color-unfocused 0x928374
+# gruvbox: 0x282828, 0xb16286, 0x928374
+# onedark: 0x282c34, 0x61afef, 0xabb2bf
+riverctl background-color 0x282c34
+riverctl border-color-focused 0x61afef
+riverctl border-color-unfocused 0xabb2bf
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -175,9 +175,9 @@ wideriver \
 	--inner-gaps					6			\
 	--outer-gaps					6			\
 	--border-width-monocle			2			\
-	--border-color-focused			0x0a7aca	\
-	--border-color-focused-monocle	0x0a7aca	\
-	--border-color-unfocused		0x928374	&
+	--border-color-focused			0x45779f	\
+	--border-color-focused-monocle	0x45779f	\
+	--border-color-unfocused		0x373737	&
 
 # necessary programs
 riverctl spawn "waybar &"

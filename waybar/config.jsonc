@@ -87,6 +87,6 @@
 		"status-icons": {
 			"paused": "⏸"
 		},
-	 //"ignored-players": ["firefox", "librewolf"]
+	 "ignored-players": ["firefox", "librewolf"]
 	},
 }

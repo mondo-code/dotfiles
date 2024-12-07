@@ -5,16 +5,31 @@
 	"position": "top",
 
 	"modules-left": [
+		"custom/separator#1",
 		"image",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/tags",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
 		"river/layout",
-		"mpris"
+		"custom/right-arrow-dark",
+		"custom/separator#2",
+		"river/window",
 	],
 	"modules-center": [
-		"river/tags",
 	],
 	"modules-right": [
-		"cpu",
+		"custom/left-arrow-dark",
+		"user",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"cpu",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"clock",
 	],
 
@@ -41,6 +56,30 @@
 	"user": {
 		"format": "UP: {work_d}:{work_H}:{work_M}",
 		"interval": 60
+	},
+	"custom/separator#1": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/separator#2": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
 	},
 	"image": {
 		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
@@ -76,17 +115,5 @@
 			"",
 			""
 		]
-	},
-	"mpris": {
-		"format": " {player_icon} {artist} - {title} ",
-		"format-paused": " {status_icon} {artist} - {title} ",
-		"player-icons": {
-			"default": "▶",
-			"mpv": "🎵"
-		},
-		"status-icons": {
-			"paused": "⏸"
-		},
-	 //"ignored-players": ["firefox", "librewolf"]
-	},
+	}
 }

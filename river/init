@@ -9,12 +9,14 @@
 # documentation.
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-RIVER_DIR="$HOME/.config/river/"
+RIVER_DIR="$HOME/.config/river"
 
 riverctl map normal Super Return spawn foot
 riverctl map normal Super D spawn "rofi -show drun"
-riverctl map normal Super B spawn "librewolf"
-riverctl map normal Super+Shift W spawn "killall swaybg && $RIVER_DIR/set_wallpaper"
+riverctl map normal Super B spawn "firefox"
+# setwall is a script in ~/.local/bin on my system
+riverctl map normal Super+Shift W spawn "$RIVER_DIR/setwall"
+riverctl map normal Super+Shift S spawn "rofi -show drun -run-shell-command 'selwall'"
 riverctl map normal Super Q close
 riverctl map normal Super+Shift E exit
 
@@ -26,8 +28,9 @@ riverctl map normal Super+Shift K swap previous
 
 # switch layout
 riverctl map normal Super Z send-layout-cmd wideriver "--layout left"
-riverctl map normal Super X send-layout-cmd wideriver "--layout top"
-riverctl map normal Super C send-layout-cmd wideriver "--layout monocle"
+riverctl map normal Super X send-layout-cmd wideriver "--layout right"
+riverctl map normal Super T send-layout-cmd wideriver "--layout top"
+riverctl map normal Super M send-layout-cmd wideriver "--layout monocle"
 
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
@@ -41,12 +44,8 @@ riverctl map normal Super+Shift Comma send-to-output previous
 riverctl map normal Super+Shift Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
-
-# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+riverctl map normal Super H send-layout-cmd wideriver "ratio-master -0.05"
+riverctl map normal Super L send-layout-cmd wideriver "ratio-master +0.05"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -146,9 +145,7 @@ done
 # Set background and border color
 # gruvbox: 0x282828, 0xb16286, 0x928374
 # onedark: 0x282c34, 0x61afef, 0xabb2bf
-riverctl background-color 0x282c34
-riverctl border-color-focused 0x61afef
-riverctl border-color-unfocused 0xabb2bf
+riverctl background-color 0x1d2021
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -175,14 +172,19 @@ wideriver \
 	--inner-gaps					6			\
 	--outer-gaps					6			\
 	--border-width-monocle			2			\
-	--border-color-focused			0x45779f	\
-	--border-color-focused-monocle	0x45779f	\
-	--border-color-unfocused		0x373737	&
+	--border-color-focused			0xb16286	\
+	--border-color-focused-monocle	0xb16286	\
+	--border-color-unfocused		0x928374	&
 
 # necessary programs
 riverctl spawn "waybar &"
 riverctl spawn "dunst &"
 
 # custom setup for my system
-riverctl spawn "$RIVER_DIR/set_wallpaper"
+riverctl spawn "$RIVER_DIR/setwall"
 wlr-randr --output DP-1 --mode 1920x1080@144.001007 --pos 0,0 --output HDMI-A-1 --mode 1920x1080@60 --pos 1920,0
+
+swayidle -w \
+	timeout 1800 'swaylock --color 1d2021' \
+	timeout 1805 'swaymsg "output * power off"' \
+	resume 'swaymsg "output * power on"'

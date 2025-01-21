@@ -4,7 +4,7 @@
 	"layer": "top",
 	"position": "top",
 
-	"spacing": 5,
+	"spacing": 10,
 
 	"modules-left": [
 		"image",
@@ -40,7 +40,7 @@
 		"interval": 60
 	},
 	"idle_inhibitor": {
-		"format": "IDLE: {icon}  {status}",
+		"format": "STOP IDLE: {icon}  {status}",
 		"format-icons": {
 			"activated": "",
 			"deactivated": ""

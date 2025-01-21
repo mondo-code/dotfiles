@@ -27,10 +27,10 @@ riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 
 # switch layout
-riverctl map normal Super Z send-layout-cmd wideriver "--layout left"
-riverctl map normal Super X send-layout-cmd wideriver "--layout right"
-riverctl map normal Super T send-layout-cmd wideriver "--layout top"
-riverctl map normal Super M send-layout-cmd wideriver "--layout monocle"
+riverctl map normal Super Left send-layout-cmd wideriver "--layout left"
+riverctl map normal Super Right send-layout-cmd wideriver "--layout right"
+riverctl map normal Super Up send-layout-cmd wideriver "--layout top"
+riverctl map normal Super Down send-layout-cmd wideriver "--layout monocle"
 
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output next
@@ -44,8 +44,8 @@ riverctl map normal Super+Shift Comma send-to-output previous
 riverctl map normal Super+Shift Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd wideriver "ratio-master -0.05"
-riverctl map normal Super L send-layout-cmd wideriver "ratio-master +0.05"
+riverctl map normal Super H send-layout-cmd wideriver "--ratio -0.05"
+riverctl map normal Super L send-layout-cmd wideriver "--ratio +0.05"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -102,12 +102,6 @@ riverctl map normal Super Space toggle-float
 
 # Super+F to toggle fullscreen
 riverctl map normal Super F toggle-fullscreen
-
-# Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor

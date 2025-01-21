@@ -37,9 +37,7 @@ require("lazy").setup({
 	'L3MON4D3/luasnip',
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
-	'Mofiqul/dracula.nvim',
 	'navarasu/onedark.nvim',
-	{ "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
 	{
 		'nvimdev/dashboard-nvim',
 		event = 'VimEnter',
@@ -49,16 +47,43 @@ require("lazy").setup({
 		end,
 		dependencies = { {'nvim-tree/nvim-web-devicons'}}
 	},
-	'VonHeikemen/lsp-zero.nvim',
 	'andweeb/presence.nvim',
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	},
+	'nvim-tree/nvim-tree.lua',
+	'ziglang/zig.vim',
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
 })
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- setups for specific LSPs are in ./after/plugin/lsp.lua
 
 require('mason').setup()
 require('mason-lspconfig').setup()
-require('lsp-zero')
-require('lspconfig').pylsp.setup({})
-require('lspconfig').clangd.setup({})
-require('lspconfig').rust_analyzer.setup({})
+require("nvim-tree").setup()
 
 -- copy binds
 -- i know this is lazy but i don't care

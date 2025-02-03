@@ -1,0 +1,82 @@
+* {
+	font-size: 14px;
+	font-family: JetBrains Mono;
+	border-radius: 5px;
+	margin: 2px 2px;
+}
+
+window#waybar {
+	background: transparent;
+	color: #b16286;
+}
+
+#tags {
+	background: #1d2021;
+	padding: 0 4px;
+	border: 2px solid #b16286;
+}
+#tags button {
+	padding: 0 2px;
+	color: #3c3836;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #7c6f64;
+	border: #7c6f64;
+	padding: 0 4px;
+}
+#tags button.occupied {
+	color: #ebdbb2;
+}
+#tags button.focused {
+	color: #b16286;
+}
+#tags button.urgent {
+	color: #fe8019;
+}
+
+#layout {
+	background: #1d2021;
+	color: #458588;
+	padding: 0 4px;
+	border: 2px solid #458588;
+}
+#idle_inhibitor {
+	color: #689d6a;
+	background: #1d2021;
+	border: 2px solid #689d6a;
+}
+#cpu {
+	color: #d79921;
+	background: #1d2021;
+	border: 2px solid #d79921;
+}
+#memory {
+	color: #98971a;
+	background: #1d2021;
+	border: 2px solid #98971a;
+}
+#clock {
+	color: #cc241d;
+	background: #1d2021;
+	border: 2px solid #cc241d;
+}
+#image {
+	background: #1d2021;
+	padding: 0 4px;
+	border: 2px solid #d5c4a1;
+}
+
+#user,
+#idle_inhibitor,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date 
+#image {
+	padding: 4 8px;
+}

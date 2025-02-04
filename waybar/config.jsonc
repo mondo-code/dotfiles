@@ -89,7 +89,7 @@
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "Ψ {usage:2}%"
+		"format": "π {usage:2}%"
 	},
 	// this is here in case of running this on a laptop
 	"battery": {

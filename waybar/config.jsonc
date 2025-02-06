@@ -79,8 +79,10 @@
 	},
 
 	"clock": {
-		"format": "{:%a %m-%d-%y %I:%M %p}",
-		"tooltip": false
+		"interval": 60,
+		"tooltip": true,
+		"format": "{:%I:%M %p}",
+		"tooltip-format": "{:%a %m-%d-%Y}",
 	},
 
 	"memory": {

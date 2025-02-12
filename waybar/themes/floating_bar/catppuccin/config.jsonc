@@ -1,0 +1,96 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"spacing": 10,
+
+	"modules-left": [
+		"image",
+		"river/layout",
+		"idle_inhibitor"
+	],
+	"modules-center": [
+		"river/tags",
+	],
+	"modules-right": [
+		"cpu",
+		"memory",
+		"clock",
+	],
+
+	"river/tags": {
+		"num_tags": 9,
+		"tag-labels": [
+			"I",
+			"II",
+			"III",
+			"IV",
+			"V",
+			"VI",
+			"VII",
+			"VIII",
+			"IX",
+		],
+	},
+	
+	"user": {
+		"format": "UP: {work_d}:{work_H}:{work_M}",
+		"interval": 60
+	},
+	"idle_inhibitor": {
+		"format": "STOP IDLE: {icon}  {status}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
+		"on-click": "rofi -show drun",
+		"size": 22
+	},
+
+	"clock": {
+		"format": "{:%a %m-%d-%y %I:%M %p}",
+		"tooltip": false
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": "MEM: {used:0.1f}G"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU: {usage:2}%"
+	},
+	// this is here in case of running this on a laptop
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	//"mpris": {
+	//	"format": " {player_icon} {artist} - {title} ",
+	//	"format-paused": " {status_icon} {artist} - {title} ",
+	//	"player-icons": {
+	//		"default": "▶",
+	//		"mpv": "🎵"
+	//	},
+	//	"status-icons": {
+	//		"paused": "⏸"
+	//	},
+	// "ignored-players": ["firefox", "librewolf", "brave"]
+	//},
+}

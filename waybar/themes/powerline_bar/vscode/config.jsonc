@@ -1,0 +1,119 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"custom/separator#1",
+		"image",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/tags",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/layout",
+		"custom/right-arrow-dark",
+		"custom/separator#2",
+		"river/window",
+	],
+	"modules-center": [
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"user",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"cpu",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock",
+	],
+
+	"river/tags": {
+		"num_tags": 9,
+		"tag-labels": [
+			"I",
+			"II",
+			"III",
+			"IV",
+			"V",
+			"VI",
+			"VII",
+			"VIII",
+			"IX",
+		],
+	},
+
+	"river/window": {
+		"format": "{}",
+		"max-length": 300,
+	},
+	
+	"user": {
+		"format": "UP: {work_d}:{work_H}:{work_M}",
+		"interval": 60
+	},
+	"custom/separator#1": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/separator#2": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
+		"on-click": "rofi -show drun",
+		"size": 22
+	},
+
+	"clock": {
+		"format": "{:%a %m-%d-%y %I:%M %p}",
+		"tooltip": false
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": "MEM: {used:0.1f}G / {total:0.1f}G"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU:{usage:2}%"
+	},
+	// this is here in case of running this on a laptop
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	}
+}

@@ -1,0 +1,91 @@
+* {
+	font-size: 14px;
+	font-family: JetBrains Mono;
+}
+
+window#waybar {
+	background: #282c34;
+	color: #61afef;
+}
+
+#tags {
+	background: #1C1F25;
+}
+#tags button {
+	padding: 0 6px;
+	color: #3e4451;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #8E97A9;
+	border: #8E97A9;
+	padding: 0 6px;
+}
+#tags button.occupied {
+	color: #abb2bf;
+}
+#tags button.focused {
+	color: #61afef;
+}
+#tags button.urgent {
+	color: #e06c75;
+}
+
+#layout {
+	background: #1C1F25;
+}
+
+#custom-separator.1 {
+	color: #1C1F25;
+	background: #1C1F25;
+	font-size: 8px;
+}
+#custom-separator.2 {
+	color: #282c34;
+	background: #282c34;
+	font-size: 14px;
+}
+
+#custom-left-arrow-dark,
+#custom-right-arrow-dark {
+	color: #1C1F25;
+	font-size: 20px;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: #282c34;
+	font-size: 20px;
+	background: #1C1F25;
+}
+#user {
+	color: #e06c75;
+	background: #1c1f25;
+}
+#memory {
+	color: #98c379;
+	background: #1c1f25;
+}
+#cpu {
+	color: #e5c07b;
+	background: #1c1f25;
+}
+#clock {
+	color: #c678dd;
+	background: #1c1f25;
+}
+#image {
+	background: #1c1f25;
+}
+
+#user,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date 
+#image {
+	padding: 0 10px;
+}

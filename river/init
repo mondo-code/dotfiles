@@ -13,12 +13,12 @@ RIVER_DIR="$HOME/.config/river"
 
 riverctl map normal Super Return spawn foot
 riverctl map normal Super D spawn "rofi -show drun"
-riverctl map normal Super B spawn "firefox"
+riverctl map normal Super B spawn "chromium --enable-blink-features=MiddleClickAutoscroll"
 riverctl map normal Super E spawn "emacs"
 # setwall is a script in ~/.local/bin on my system
-riverctl map normal Super+Shift W spawn "$RIVER_DIR/setwall"
-riverctl map normal Super+Shift S spawn "$RIVER_DIR/screenshot"
-riverctl map normal Super+Shift B spawn "$RIVER_DIR/changebar"
+riverctl map normal Super+Shift W spawn "$RIVER_DIR/scripts/setwall"
+riverctl map normal Super+Shift S spawn "$RIVER_DIR/scripts/screenshot"
+riverctl map normal Super+Shift B spawn "$RIVER_DIR/scripts/changebar"
 riverctl map normal Super Q close
 riverctl map normal Super+Shift E exit
 
@@ -69,12 +69,11 @@ riverctl map normal Super+Alt+Shift L resize horizontal 100
 
 # Super + Left Mouse Button to move views
 riverctl map-pointer normal Super BTN_LEFT move-view
-
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view
-
 # Super + Middle Mouse Button to toggle float
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+riverctl input pointer-1133-49295-Logitech_G403_HERO_Gaming_Mouse pointer-accel -0.5
 
 for i in $(seq 1 9)
 do
@@ -141,7 +140,8 @@ done
 # Set background and border color
 # gruvbox: 0x282828, 0xb16286, 0x928374
 # onedark: 0x282c34, 0x61afef, 0xabb2bf
-riverctl background-color 0x1d2021
+# nord: 0x2e3440, 
+riverctl background-color 0x282828
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -156,7 +156,7 @@ riverctl set-repeat 50 300
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl rule-add ssd
 riverctl default-layout wideriver
-# rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5 &
+# gruvbox
 wideriver \
 	--layout						left		\
 	--layout-alt					top			\
@@ -172,15 +172,31 @@ wideriver \
 	--border-color-focused-monocle	0x83a598	\
 	--border-color-unfocused		0x665c54	&
 
+# onedark
+# wideriver \
+# 	--layout						left		\
+# 	--layout-alt					top			\
+# 	--stack							even		\
+# 	--count-master					1			\
+# 	--ratio-master					0.50		\
+# 	--ratio-wide					0.40		\
+# 	--no-smart-gaps								\
+# 	--inner-gaps					6			\
+# 	--outer-gaps					6			\
+# 	--border-width-monocle			2			\
+# 	--border-color-focused			0x61afef	\
+# 	--border-color-focused-monocle	0x61afef	\
+# 	--border-color-unfocused		0x3e4451	&
+
 # necessary programs
 riverctl spawn "waybar &"
 riverctl spawn "dunst &"
 
 # custom setup for my system
-riverctl spawn "$RIVER_DIR/setwall"
+riverctl spawn "$RIVER_DIR/scripts/setwall"
 wlr-randr --output DP-1 --mode 1920x1080@144.001007 --pos 0,0 --output HDMI-A-1 --mode 1920x1080@60 --pos 1920,0
 
 swayidle -w \
-	timeout 1800 'swaylock --color 1d2021' \
+	timeout 1800 'swaylock --color 3e4451' \
 	timeout 1805 'swaymsg "output * power off"' \
 	resume 'swaymsg "output * power on"'

@@ -5,53 +5,47 @@
 	"position": "top",
 
 	"modules-left": [
-		"custom/rofi_button",
-		"custom/left_sep",
+		"custom/separator#1",
+		"image",
+		"custom/separator#1",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
 		"river/tags",
-		"custom/right_sep"
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/layout",
+		"custom/right-arrow-dark",
+		"custom/separator#2",
+		"river/window",
 	],
 	"modules-center": [
-		"clock",
 	],
 	"modules-right": [
-		"custom/left_sep",
+		"custom/left-arrow-dark",
 		"idle_inhibitor",
-		"custom/right_sep",
-		"custom/left_sep",
-		"user",
-		"custom/right_sep",
-		"custom/left_sep",
-		"cpu",
-		"custom/right_sep",
-		"custom/left_sep",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"memory",
-		"custom/right_sep",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"cpu",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock",
 	],
-
-	"custom/rofi_button": {
-		"format": "arch linux ",
-		"on-click": "rofi -show drun"
-	},
-
-	"custom/left_sep": {
-		"format": "["
-	},
-	"custom/right_sep": {
-		"format": "]"
-	},
 
 	"river/tags": {
 		"num_tags": 9,
 		"tag-labels": [
-			"01",
-			"02",
-			"03",
-			"04",
-			"05",
-			"06",
-			"07",
-			"08",
-			"09",
+			"I",
+			"II",
+			"III",
+			"IV",
+			"V",
+			"VI",
+			"VII",
+			"VIII",
+			"IX",
 		],
 	},
 
@@ -60,17 +54,29 @@
 		"max-length": 300,
 	},
 	
-	"idle_inhibitor": {
-		"format": " {icon}  {status} ",
-		"format-icons": {
-			"activated": "",
-			"deactivated": ""
-		}
+	"custom/separator#1": {
+		"format": " ",
+		"tooltip": false
 	},
-
-	"user": {
-		"format": "Ω {work_d}:{work_H}:{work_M}",
-		"interval": 60
+	"custom/separator#2": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
 	},
 	"image": {
 		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
@@ -79,12 +85,17 @@
 	},
 
 	"clock": {
-		"interval": true,
-		"tooltip": true,
-		"format": "{:%I:%M %p}",
-		"tooltip-format": "{:%a %m-%d-%Y}",
+		"format": "{:%a %m-%d-%y %I:%M %p}",
+		"tooltip": false
 	},
 
+	"idle_inhibitor": {
+		"format": "{icon}  {status}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
 	"memory": {
 		"interval": 5,
 		"format": "μ {used:0.1f}G"
@@ -96,7 +107,7 @@
 	// this is here in case of running this on a laptop
 	"battery": {
 		"states": {
-			"good": 90,
+			"good": 95,
 			"warning": 30,
 			"critical": 15
 		},

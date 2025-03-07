@@ -5,7 +5,7 @@
 
 window#waybar {
 	background: #282828;
-	color: #b16286;
+	color: #83a598;
 }
 
 #tags {
@@ -28,7 +28,7 @@ window#waybar {
 	color: #ebdbb2;
 }
 #tags button.focused {
-	color: #b16286;
+	color: #83a598;
 }
 #tags button.urgent {
 	color: #fe8019;
@@ -36,6 +36,7 @@ window#waybar {
 
 #layout {
 	background: #1d2021;
+	padding: 4 5px;
 }
 
 #custom-separator.1 {
@@ -77,7 +78,7 @@ window#waybar {
 /*	font-size: 20px;*/
 /*}*/
 
-#user {
+#idle_inhibitor {
 	color: #689d6a;
 	background: #1d2021;
 }
@@ -97,7 +98,7 @@ window#waybar {
 	background: #1d2021;
 }
 
-#user,
+#idle_inhibitor,
 #clock,
 #memory,
 #cpu, 

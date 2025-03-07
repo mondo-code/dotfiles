@@ -40,7 +40,7 @@
 		"interval": 60
 	},
 	"idle_inhibitor": {
-		"format": "STOP IDLE: {icon}  {status}",
+		"format": "{icon}  {status}",
 		"format-icons": {
 			"activated": "",
 			"deactivated": ""
@@ -59,11 +59,11 @@
 
 	"memory": {
 		"interval": 5,
-		"format": "MEM: {used:0.1f}G"
+		"format": "μ {used:0.1f}G"
 	},
 	"cpu": {
 		"interval": 5,
-		"format": "CPU: {usage:2}%"
+		"format": "π {usage:2}%"
 	},
 	// this is here in case of running this on a laptop
 	"battery": {

@@ -36,6 +36,7 @@ window#waybar {
 
 #layout {
 	background: #1C1F25;
+	padding: 4 5px;
 }
 
 #custom-separator.1 {
@@ -60,7 +61,7 @@ window#waybar {
 	font-size: 20px;
 	background: #1C1F25;
 }
-#user {
+#idle_inhibitor {
 	color: #e06c75;
 	background: #1c1f25;
 }
@@ -80,7 +81,7 @@ window#waybar {
 	background: #1c1f25;
 }
 
-#user,
+#idle_inhibitor,
 #clock,
 #memory,
 #cpu, 

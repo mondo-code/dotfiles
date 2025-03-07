@@ -5,56 +5,56 @@
 }
 
 window#waybar {
-	background: #282828;
-	color: #ebdbb2;
+	background: #15181d;
+	color: #fcfcfc;
 	padding: 0 6px;
 	margin: 2px 2px;
 }
 
 #tags {
-	background: #282828;
+	background: #15181d;
 }
 #tags button {
 	padding: 0 3px;
-	color: #3c3836;
+	color: #20232b;
 }
 #tags button:hover {
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
 #tags button:hover {
-	background: #7c6f64;
-	border: #7c6f64;
+	background: #63656b;
+	border: #63656b;
 	padding: 0 3px;
 }
 #tags button.occupied {
-	color: #ebdbb2;
+	color: #fcfcfc;
 }
 #tags button.focused {
 	color: #83a598;
 }
 #tags button.urgent {
-	color: #cc241d;
+	color: #ab3641;
 }
 
 #layout {
-	background: #282828;
+	background: #15181d;
 }
 
 #user {
-	background: #282828;
+	background: #15181d;
 }
 #memory {
-	background: #282828;
+	background: #15181d;
 }
 #cpu {
-	background: #282828;
+	background: #15181d;
 }
 #clock {
-	background: #282828;
+	background: #15181d;
 }
 #image {
-	background: #282828;
+	background: #15181d;
 }
 
 #user,

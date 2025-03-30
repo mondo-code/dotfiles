@@ -61,22 +61,6 @@ window#waybar {
 	font-size: 20px;
 	background: #1d2021;
 }
-/*#custom-left-arrow-widget1 {*/
-/*	color: #689d6a;*/
-/*	font-size: 20px;*/
-/*}*/
-/*#custom-left-arrow-widget2 {*/
-/*	color: #458588;*/
-/*	font-size: 20px;*/
-/*}*/
-/*#custom-left-arrow-widget3 {*/
-/*	color: #d79921;*/
-/*	font-size: 20px;*/
-/*}*/
-/*#custom-left-arrow-widget4 {*/
-/*	color: #cc241d;*/
-/*	font-size: 20px;*/
-/*}*/
 
 #idle_inhibitor {
 	color: #689d6a;
@@ -97,8 +81,13 @@ window#waybar {
 #image {
 	background: #1d2021;
 }
+#cava {
+	color: #b16286;
+	background: #1d2021;
+}
 
 #idle_inhibitor,
+#cava,
 #clock,
 #memory,
 #cpu, 

@@ -61,6 +61,10 @@ window#waybar {
 	font-size: 20px;
 	background: #1C1F25;
 }
+#cava {
+	color: #56b6c2;
+	background: #1c1f25;
+}
 #idle_inhibitor {
 	color: #e06c75;
 	background: #1c1f25;
@@ -85,8 +89,7 @@ window#waybar {
 #clock,
 #memory,
 #cpu, 
-#battery,
-#date 
-#image {
+#cava,
+#date {
 	padding: 0 10px;
 }

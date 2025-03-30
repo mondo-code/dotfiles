@@ -5,14 +5,14 @@
 }
 
 window#waybar {
-	background: #282828;
+	background: #1d2021;
 	color: #ebdbb2;
 	padding: 0 6px;
 	margin: 2px 2px;
 }
 
 #tags {
-	background: #282828;
+	background: #1d2021;
 }
 #tags button {
 	padding: 0 3px;
@@ -38,23 +38,23 @@ window#waybar {
 }
 
 #layout {
-	background: #282828;
+	background: #1d2021;
 }
 
 #user {
-	background: #282828;
+	background: #1d2021;
 }
 #memory {
-	background: #282828;
+	background: #1d2021;
 }
 #cpu {
-	background: #282828;
+	background: #1d2021;
 }
 #clock {
-	background: #282828;
+	background: #1d2021;
 }
 #image {
-	background: #282828;
+	background: #1d2021;
 }
 
 #user,

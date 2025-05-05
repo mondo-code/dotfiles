@@ -22,9 +22,6 @@
 	],
 	"modules-right": [
 		"custom/left-arrow-dark",
-		"cava",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"idle_inhibitor",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
@@ -89,8 +86,7 @@
 	"clock": {
 		"interval": true,
 		"tooltip": true,
-		"format": "{:%I:%M %p}",
-		"tooltip-format": "{:%a %m-%d-%Y}",
+		"format": "{:%a %m-%d-%Y %I:%M %p}"
 	},
 
 	"idle_inhibitor": {
@@ -111,7 +107,7 @@
 	// this is here in case of running this on a laptop
 	"battery": {
 		"states": {
-			"good": 95,
+			"good": 85,
 			"warning": 30,
 			"critical": 15
 		},

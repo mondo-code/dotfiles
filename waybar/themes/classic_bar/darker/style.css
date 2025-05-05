@@ -1,0 +1,68 @@
+* {
+	font-size: 14px;
+	font-family: Hack;
+	margin: 0px 2px;
+}
+
+window#waybar {
+	background: #15181d;
+	color: #fcfcfc;
+	padding: 0 6px;
+	margin: 2px 2px;
+}
+
+#tags {
+	background: #15181d;
+}
+#tags button {
+	padding: 0 3px;
+	color: #20232b;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #63656b;
+	border: #63656b;
+	padding: 0 3px;
+}
+#tags button.occupied {
+	color: #fcfcfc;
+}
+#tags button.focused {
+	color: #83a598;
+}
+#tags button.urgent {
+	color: #ab3641;
+}
+
+#layout {
+	background: #15181d;
+}
+
+#user {
+	background: #15181d;
+}
+#memory {
+	background: #15181d;
+}
+#cpu {
+	background: #15181d;
+}
+#clock {
+	background: #15181d;
+}
+#image {
+	background: #15181d;
+}
+
+#user,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date 
+#image {
+	padding: 2 8px;
+}

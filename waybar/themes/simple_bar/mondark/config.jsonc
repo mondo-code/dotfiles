@@ -28,7 +28,7 @@
 
 	"river/window": {
 		"format": "{}",
-		"max-length": 500,
+		"max-length": 110,
 	},
 	
 	"custom/separator#1": {

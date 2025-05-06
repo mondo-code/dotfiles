@@ -141,7 +141,7 @@ done
 # gruvbox: 0x282828, 0xb16286, 0x928374
 # onedark: 0x282c34, 0x61afef, 0xabb2bf
 # nord: 0x2e3440, 
-riverctl background-color 0x282828
+riverctl background-color 0x1f1f1f
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300

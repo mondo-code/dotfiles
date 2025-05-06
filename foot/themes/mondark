@@ -1,0 +1,25 @@
+[colors]
+# Primary colors
+foreground=cccccc
+background=1f1f1f
+
+# Normal colors
+regular0=000000  # black
+regular1=9c1114	 # red
+regular2=6a9955  # green
+regular3=dc9513  # yellow
+regular4=569cd6  # blue
+regular5=bc3fbc  # magenta
+regular6=4ec9b0  # cyan
+regular7=e5e5e5  # white
+
+# Bright colors
+bright0=666666   # bright black (gray)
+bright1=e8292d	 # bright red
+bright2=b5cea8   # bright green
+bright3=efb449	 # bright yellow
+bright4=9cdcfe   # bright blue
+bright5=d670d6   # bright magenta
+bright6=9cdcfe   # bright cyan
+bright7=e5e5e5   # bright white
+

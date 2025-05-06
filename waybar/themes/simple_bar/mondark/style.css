@@ -22,8 +22,8 @@ window#waybar {
 	text-shadow: inherit;
 }
 #tags button:hover {
-	background: #dcdcdc; /* closest mapped from #7c6f64 */
-	border: #dcdcdc;
+	background: #444444; /* closest mapped from #7c6f64 */
+	border: #444444;
 	padding: 0 6px;
 }
 #tags button.occupied {

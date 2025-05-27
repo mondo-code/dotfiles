@@ -1,0 +1,3 @@
+#!/bin/sh
+killall swaybg
+swaybg -i "$HOME/Pictures/Wallpapers/0023.jpg" -m fill &

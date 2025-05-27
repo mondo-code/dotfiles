@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+FIFO="$XDG_RUNTIME_DIR/sandbar"
+[ -e "$FIFO" ] && rm -f "$FIFO"
+mkfifo "$FIFO"
+
+while cat "$FIFO"; do :; done | sandbar \
+	-font "JetBrains Mono:14px" \
+	-active-fg-color "#1f1f1f" \
+	-active-bg-color "#9cdcfe" \
+	-inactive-fg-color "#e5e5e5" \
+	-inactive-bg-color "#1f1f1f" \
+	-urgent-fg-color "#1f1f1f" \
+	-urgent-bg-color "#ce9178" \
+	-title-fg-color "#1f1f1f" \
+	-title-bg-color "#9cdcfe"

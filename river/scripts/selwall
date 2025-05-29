@@ -1,3 +1,26 @@
 #!/bin/sh
+WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
+
+# Find image files (add/remove extensions as desired), sort for consistency
+mapfile -t files < <(
+  find "$WALLPAPER_DIR" -type f \
+    \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \
+       -o -iname '*.bmp' -o -iname '*.tiff' \) \
+    | sort
+)
+
+# Invoke fuzzel (dmenu‐style) to pick one
+selection=$(printf '%s\n' "${files[@]}" \
+            | fuzzel -l 20 -w 55 -d -p "Wallpaper: ")
+
+# If user cancels or no selection, exit
+if [[ $? -ne 0 || -z "$selection" ]]; then
+  echo "No wallpaper selected."
+  exit 1
+fi
+
 killall swaybg
-swaybg -i "$HOME/Pictures/Wallpapers/0023.jpg" -m fill &
+
+# Set the new wallpaper (fill mode; change to 'center', 'stretch', etc. as you like)
+swaybg -i "$selection" -m fill &
+

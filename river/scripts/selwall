@@ -19,8 +19,7 @@ if [[ $? -ne 0 || -z "$selection" ]]; then
   exit 1
 fi
 
-killall swaybg
+killall wbg 
 
-# Set the new wallpaper (fill mode; change to 'center', 'stretch', etc. as you like)
-swaybg -i "$selection" -m fill &
+wbg "$selection" &
 

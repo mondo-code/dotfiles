@@ -5,69 +5,41 @@
 	"position": "top",
 
 	"modules-left": [
-		"custom/separator#1",
 		"image",
-		"custom/separator#1",
-		"river/tags",
-		"river/layout",
-		"custom/separator#2",
+		"river/tags"
 	],
 	"modules-center": [
-		"river/window",
+		"river/window"
 	],
 	"modules-right": [
-		"idle_inhibitor",
 		"memory",
+		"custom/delimiter",
 		"cpu",
-		"clock",
+		"custom/delimiter",
+		"clock"
 	],
 
 	"river/tags": {
-		"num_tags": 9,
+		"num-tags": 9
 	},
 
 	"river/window": {
 		"format": "{}",
-		"max-length": 110,
+		"max-length": 110
 	},
 	
-	"custom/separator#1": {
-		"format": " ",
-		"tooltip": false
-	},
-	"custom/separator#2": {
-		"format": " ",
+	"custom/delimiter": {
+		"format": " | ",
 		"tooltip": false
 	},
 	"image": {
 		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
-		"on-click": "rofi -show drun",
-		"size": 22
+		"on-click": "fuzzel",
+		"size": 18
 	},
 	"clock": {
-		"format": "τ {:%I:%M %p}",
-		"format-alt": "{:%A, %B %d, %Y (%R)}  ",
-		"tooltip-format": "<tt><small>{calendar}</small></tt>",
-		"calendar": {
-			"mode"          : "year",
-			"mode-mon-col"  : 3,
-			"weeks-pos"     : "right",
-			"on-scroll"     : 1,
-			"format": {
-				"months":     "<span color='#ffead3'><b>{}</b></span>",
-				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
-				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-			}
-		},
-		"actions":  {
-			"on-click-right": "mode",
-			"on-scroll-up": "tz_up",
-			"on-scroll-down": "tz_down",
-			"on-scroll-up": "shift_up",
-			"on-scroll-down": "shift_down"
-		}
+		"format": "τ {:%m-%d-%Y %I:%M %p}",
+		"tooltip": false
 	},
 
 	"idle_inhibitor": {
@@ -101,25 +73,4 @@
 			""
 		]
 	},
-	"cava": {
-//        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
-        "framerate": 30,
-        "autosens": 1,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 10000,
-        "method": "pulse",
-        "source": "auto",
-        "stereo": true,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "actions": {
-                   "on-click-right": "mode"
-                   }
-    },
 }

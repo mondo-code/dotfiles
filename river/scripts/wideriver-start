@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# mondark
+wideriver \
+	--layout						left		\
+	--layout-alt					top			\
+	--stack							even		\
+	--count-master					1			\
+	--ratio-master					0.50		\
+	--ratio-wide					0.40		\
+	--no-smart-gaps								\
+	--inner-gaps					6			\
+	--outer-gaps					6			\
+	--border-width					2			\
+	--border-width-monocle			2			\
+	--border-color-focused			0xce9178	\
+	--border-color-focused-monocle	0xce9178	\
+	--border-color-unfocused		0x666666	&
+
+# gruvbox
+# wideriver \
+# 	--layout						left		\
+# 	--layout-alt					top			\
+# 	--stack							even		\
+# 	--count-master					1			\
+# 	--ratio-master					0.50		\
+# 	--ratio-wide					0.40		\
+# 	--no-smart-gaps								\
+# 	--inner-gaps					6			\
+# 	--outer-gaps					6			\
+# 	--border-width-monocle			2			\
+# 	--border-color-focused			0x458588	\
+# 	--border-color-focused-monocle	0x458588	\
+# 	--border-color-unfocused		0x665c54	&
+
+# onedark
+# wideriver \
+# 	--layout						left		\
+# 	--layout-alt					top			\
+# 	--stack							even		\
+# 	--count-master					1			\
+# 	--ratio-master					0.50		\
+# 	--ratio-wide					0.40		\
+# 	--no-smart-gaps								\
+# 	--inner-gaps					6			\
+# 	--outer-gaps					6			\
+# 	--border-width-monocle			2			\
+# 	--border-color-focused			0x61afef	\
+# 	--border-color-focused-monocle	0x61afef	\
+# 	--border-color-unfocused		0x3e4451	&

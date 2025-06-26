@@ -1,5 +1,0 @@
-#!/bin/sh
-
-WALLPAPER=$(find "$HOME/Pictures/Wallpapers/gruvbox" -type f | shuf -n 1)
-killall swaybg
-swaybg -i "$WALLPAPER" -m fill &

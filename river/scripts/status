@@ -1,48 +1,9 @@
-#!/bin/env sh
-
-cpu() {
-	cpu="$(grep -o "^[^ ]*" /proc/loadavg)"
-}
-
-memory() {
-	memory="$(free -h | sed -n "2s/\([^ ]* *\)\{2\}\([^ ]*\).*/\2/p")"
-}
-
-datetime() {
-	datetime="$(date "+%a %d %b %I:%M %P")"
-}
-
-# if running on a laptop
-# bat() {
-# 	read -r bat_status </sys/class/power_supply/BAT0/status
-# 	read -r bat_capacity </sys/class/power_supply/BAT0/capacity
-# 	bat="$bat_status $bat_capacity%"
-# }
-
-vol() {
-	vol="$([ "$(pamixer --get-mute)" = "false" ] && printf "%s%%" "$(pamixer --get-volume)" || printf '-')"
-}
-
-display() {
-	echo "all status [μ $memory] [π $cpu] [σ $vol] [τ $datetime]" >"$FIFO"
-}
-
-printf "%s" "$$" > "$XDG_RUNTIME_DIR/status_pid"
-FIFO="$XDG_RUNTIME_DIR/sandbar"
-[ -e "$FIFO" ] || mkfifo "$FIFO"
-sec=0
+#!/bin/sh
 
 while true; do
-	sleep 1 &
-	wait && {
-		[ $((sec % 15)) -eq 0 ] && memory
-		[ $((sec % 15)) -eq 0 ] && cpu
-		# [ $((sec % 60)) -eq 0 ] && bat
-		[ $((sec % 5)) -eq 0 ] && vol
-		[ $((sec % 5)) -eq 0 ] && datetime
-
-		[ $((sec % 5)) -eq 0 ] && display
-
-		sec=$((sec + 1))
-	}
+	cpu_usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
+	memory="$(free -h | sed -n "2s/\([^ ]* *\)\{2\}\([^ ]*\).*/\2/p")"
+	current_time=$(date +"%Y-%m-%d %I:%M %p")
+	cat <<< "π $cpu_usage | μ $memory | τ $current_time"
+	sleep 2 
 done

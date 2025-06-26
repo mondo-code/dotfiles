@@ -8,50 +8,27 @@
 		"custom/separator#1",
 		"image",
 		"custom/separator#1",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
 		"river/tags",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
 		"river/layout",
-		"custom/right-arrow-dark",
 		"custom/separator#2",
-		"river/window",
 	],
 	"modules-center": [
+		"river/window",
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
 		"idle_inhibitor",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"clock",
 	],
 
 	"river/tags": {
 		"num_tags": 9,
-		"tag-labels": [
-			"I",
-			"II",
-			"III",
-			"IV",
-			"V",
-			"VI",
-			"VII",
-			"VIII",
-			"IX",
-		],
 	},
 
 	"river/window": {
 		"format": "{}",
-		"max-length": 500,
+		"max-length": 110,
 	},
 	
 	"custom/separator#1": {
@@ -62,31 +39,35 @@
 		"format": " ",
 		"tooltip": false
 	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
 	"image": {
-		"path": "/home/ray/.config/waybar/icons/arch_gruvbox.png",
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
 		"on-click": "rofi -show drun",
 		"size": 22
 	},
 	"clock": {
-		"interval": true,
-		"tooltip": true,
-		"format": "{:%a %m-%d-%Y %I:%M %p}"
+		"format": "τ {:%I:%M %p}",
+		"format-alt": "{:%A, %B %d, %Y (%R)}  ",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode"          : "year",
+			"mode-mon-col"  : 3,
+			"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions":  {
+			"on-click-right": "mode",
+			"on-scroll-up": "tz_up",
+			"on-scroll-down": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
 	},
 
 	"idle_inhibitor": {

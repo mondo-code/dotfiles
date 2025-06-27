@@ -12,8 +12,7 @@ while IFS= read -r -d '' theme; do
     done < <(find "$theme" -mindepth 1 -maxdepth 1 -type d -print0)
 done < <(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
 
-# Use Rofi to select a theme and palette
-selected=$(printf "%s\n" "${theme_list[@]}" | rofi -dmenu -i -p "Select Waybar Theme")
+selected=$(printf "%s\n" "${theme_list[@]}" | fuzzel -d -p "Select Waybar Theme")
 
 # If a selection is made, update the Waybar configuration
 if [[ -n "$selected" ]]; then

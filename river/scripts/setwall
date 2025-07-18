@@ -1,5 +1,5 @@
 #!/bin/sh
 
-WALLPAPER=$(find "$HOME/Pictures/Wallpapers" -type f | shuf -n 1)
+WALLPAPER=$(find "$HOME/.config/river/wallpapers" -type f | shuf -n 1)
 killall wbg 
 wbg "$WALLPAPER" &

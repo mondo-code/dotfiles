@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if pgrep -x gammastep >/dev/null; then
+    pkill gammastep \
+      && notify-send -t 5000 'Nightlight disabled'
+else
+    gammastep & disown \
+      && notify-send -t 5000 'Nightlight enabled'
+fi

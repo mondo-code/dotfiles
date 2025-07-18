@@ -1,16 +1,18 @@
 #!/bin/sh
 
-RIVER_DIR="$HOME/.config/river"
+SCRIPTS="$HOME/.config/river/scripts"
 
 riverctl map normal Super Return spawn foot
 riverctl map normal Super D spawn fuzzel
 riverctl map normal Super B spawn zen-browser 
-riverctl map normal Super+Shift W spawn "$RIVER_DIR/scripts/selwall"
-riverctl map normal Super+Shift R spawn "$RIVER_DIR/scripts/setwall"
-riverctl map normal Super+Shift S spawn "$RIVER_DIR/scripts/screenshot"
-riverctl map normal Super+Shift G spawn "gammastep && notify-send -t 5 'Nightlight enabled'"
+riverctl map normal Super+Shift W spawn "$SCRIPTS/selwall"
+riverctl map normal Super+Shift R spawn "$SCRIPTS/setwall"
+riverctl map normal Super+Shift S spawn "$SCRIPTS/screenshot"
+riverctl map normal Super+Shift C spawn "$SCRIPTS/fuzzel-calc"
+riverctl map normal Super+Shift G spawn "$SCRIPTS/toggle-gammastep" 
+riverctl map normal Super+Shift B spawn "killall dam; $SCRIPTS/status | dam" 
 riverctl map normal Super Q close
-riverctl map normal Super+Shift E exit
+riverctl map normal Super+Control E exit
 
 # for the layout stack
 riverctl map normal Super J focus-view next
@@ -104,6 +106,23 @@ riverctl map normal Super F11 enter-mode passthrough
 # Super+F11 to return to normal mode
 riverctl map passthrough Super F11 enter-mode normal
 
+# SCRATCHPADS 
+# The scratchpad will live on an unused tag. Which tags are used depends on your
+# config, but rivers default uses the first 9 tags.
+scratch_tag=$((1 << 20 ))
+
+# Toggle the scratchpad with Super+P
+riverctl map normal Super P toggle-focused-tags ${scratch_tag}
+
+# Send windows to the scratchpad with Super+Shift+P
+riverctl map normal Super+Shift P set-view-tags ${scratch_tag}
+
+# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
+# explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
+
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
 for mode in normal locked
@@ -129,7 +148,7 @@ done
 
 # Set background and border color
 # gruvbox: 0x282828, 0xb16286, 0x928374
-riverctl background-color 0x1f1f1f
+riverctl background-color 0x1d2021
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -144,16 +163,17 @@ riverctl rule-add ssd
 riverctl default-layout wideriver
 
 # start layout generator
-riverctl spawn "$RIVER_DIR/scripts/wideriver-start"
+riverctl spawn "$SCRIPTS/wideriver-start"
 
 # necessary programs
-riverctl spawn fnott 
-riverctl spawn waybar
+riverctl spawn dunst 
+riverctl spawn "$SCRIPTS/status | dam" 
 
 # custom setup for my system
-riverctl spawn "$RIVER_DIR/scripts/setwall"
+riverctl spawn "$SCRIPTS/setwall"
 wlr-randr --output DP-1 --mode 1920x1080@144.001007 --pos 0,0 --output HDMI-A-1 --mode 1920x1080@60 --pos 1920,0
 
+# for screensharing portal to work w/ systemd
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 systemctl --user restart xdg-desktop-portal

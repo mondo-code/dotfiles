@@ -1,5 +1,5 @@
 #!/bin/sh
-WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
+WALLPAPER_DIR="${HOME}/.config/river/wallpapers"
 
 # Find image files (add/remove extensions as desired), sort for consistency
 mapfile -t files < <(

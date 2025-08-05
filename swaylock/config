@@ -3,34 +3,35 @@ ignore-empty-password
 indicator-idle-visible
 font=JetBrains Mono
 
-inside-color=282828eb
-inside-clear-color=282828eb
-inside-caps-lock-color=af3a03eb
-inside-ver-color=282828eb
-inside-wrong-color=9d0006eb
+inside-color=1f1f1feb
+inside-clear-color=1f1f1feb
+inside-caps-lock-color=ec8513eb
+inside-ver-color=1f1f1feb
+inside-wrong-color=9c1114eb
 
-ring-color=ebdbb2EB
-ring-clear-color=ebdbb2eb
-ring-caps-lock-color=af3a03eb
-ring-ver-color=ebdbb2eb
-ring-wrong-color=9d0006eb
+ring-color=e5e5e5EB
+ring-clear-color=e5e5e5eb
+ring-caps-lock-color=ec8513eb
+ring-ver-color=e5e5e5eb
+ring-wrong-color=9c1114eb
 
-line-color=ebdbb2eb
-line-clear-color=ebdbb2eb
-line-caps-lock-color=af3a03eb
-line-ver-color=ebdbb2eb
-line-wrong-color=9d0006eb
+line-color=e5e5e5eb
+line-clear-color=e5e5e5eb
+line-caps-lock-color=ec8513eb
+line-ver-color=e5e5e5eb
+line-wrong-color=9c1114eb
 
-text-color=ebdbb2ff
-text-clear-color=ebdbb2ff
-text-ver-color=ebdbb2ff
-text-wrong-color=ebdbb2eb
+text-color=e5e5e5ff
+text-clear-color=e5e5e5ff
+text-ver-color=e5e5e5ff
+text-wrong-color=e5e5e5eb
 
 bs-hl-color=b57614eb
-caps-lock-key-hl-color=9d0006eb
-caps-lock-bs-hl-color=ebdbb2eb
-text-caps-lock-color=ebdbb2eb
+caps-lock-key-hl-color=9c1114eb
+caps-lock-bs-hl-color=e5e5e5eb
+text-caps-lock-color=e5e5e5eb
 
-layout-bg-color=282828eb
-layout-border-color=ebdbb2ff
-layout-text-color=ebdbb2ff
+layout-bg-color=1f1f1feb
+layout-border-color=e5e5e5ff
+layout-text-color=e5e5e5ff
+

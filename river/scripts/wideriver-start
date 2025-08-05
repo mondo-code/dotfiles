@@ -29,8 +29,8 @@ wideriver \
 	--inner-gaps					6			\
 	--outer-gaps					6			\
 	--border-width-monocle			2			\
-	--border-color-focused			0x458588	\
-	--border-color-focused-monocle	0x458588	\
+	--border-color-focused			0xd5c4a1	\
+	--border-color-focused-monocle	0xd5c4a1	\
 	--border-color-unfocused		0x665c54	&
 
 # onedark

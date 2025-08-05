@@ -2,4 +2,4 @@
 
 WALLPAPER=$(find "$HOME/.config/river/wallpapers" -type f | shuf -n 1)
 killall wbg 
-wbg "$WALLPAPER" &
+wbg "$WALLPAPER" -s &

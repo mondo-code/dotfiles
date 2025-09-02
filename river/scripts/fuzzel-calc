@@ -1,13 +1,10 @@
 #!/usr/bin/env sh
 
-# Define the variable that holds the last result
+# holds last result
 LAST=""
 
-# Don't stop until the user hits escape or clicks off of fuzzel
 while true; do
-	# Add a space on the first run
 	[ -z "$LAST" ] && SPACE=" "
-	# Get user input
 	NEXT="$(fuzzel -l 0 --dmenu -p "${LAST}${SPACE}")"
 	# Quit if empty
 	[ -z "$NEXT" ] && exit 1

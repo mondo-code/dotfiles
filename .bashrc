@@ -1,15 +1,16 @@
-# .bashrc
+#
+# ~/.bashrc
+#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH="/usr/local/bin:$PATH"
-
-alias v='vim'
 alias ls='ls --color=auto'
-alias l='ls'
-alias ll='ls -l'
-alias la='ls -a'
+alias l='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias la='ls -a --color=auto'
+alias v='vim'
+alias grep='grep --color=auto'
 alias cff='clear && fastfetch'
-PS1='[\e[0;31m\u\e[m@\e[0;32m\h\e[m] \W \$ '
+PS1='\[\e[32m\]\u@\h:\[\e[34m\]\w\[\e[31m\]\$ \[\e[0m\]'
 eval "$(zoxide init bash)"

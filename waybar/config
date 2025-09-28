@@ -8,7 +8,7 @@
 
 		"image": {
 			"path": "/home/ray/.config/waybar/icons/tux_white.png",
-			"on-click": "fuzzel"
+			"on-click": "fuzzel --x-margin 8 --y-margin 8 --anchor top-left"
 		},
 		"wireplumber": {
 			"format": " \udb81\udd7e {volume}% ",

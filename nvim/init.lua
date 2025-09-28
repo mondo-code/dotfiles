@@ -29,6 +29,11 @@ vim.cmd[[nnoremap <leader>P "+P]]
 vim.cmd[[vnoremap <leader>p "+p]]
 vim.cmd[[vnoremap <leader>P "+P]]
 
+-- tabs
+vim.cmd[[ca tn tabnew]]
+vim.cmd[[ca th tabp]]
+vim.cmd[[ca tl tabn]]
+
 -- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
@@ -37,14 +42,14 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 -- transparent background
-vim.cmd([[
-augroup TransparentBackground
-autocmd!
-autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
-autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
-augroup END
-]])
+-- vim.cmd([[
+-- augroup TransparentBackground
+-- autocmd!
+-- autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
+-- autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
+-- augroup END
+-- ]])
 
 -- colors
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd[[colorscheme tokyonight]]

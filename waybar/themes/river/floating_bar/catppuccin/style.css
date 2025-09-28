@@ -1,0 +1,81 @@
+* {
+	font-size: 14px;
+	font-family: JetBrains Mono;
+	border-radius: 4px;
+	margin: 2px 2px;
+}
+
+window#waybar {
+	background: transparent;
+	color: #89b4fa;
+}
+
+#tags {
+	background: #181825;
+	padding: 0 4px;
+	border: 2px solid #89b4fa;
+}
+#tags button {
+	padding: 0 2px;
+	color: #313244;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #6c7086;
+	border: #6c7086;
+	padding: 0 4px;
+}
+#tags button.occupied {
+	color: #cdd6f4;
+}
+#tags button.focused {
+	color: #89b4fa;
+}
+#tags button.urgent {
+	color: #f38ba8;
+}
+
+#layout {
+	background: #181825;
+	color: #b4befe;
+	padding: 0 4px;
+	border: 2px solid #b4befe;
+}
+#memory {
+	color: #fab387;
+	background: #181825;
+	border: 2px solid #fab387;
+}
+#cpu {
+	color: #a6e3a1;
+	background: #181825;
+	border: 2px solid #a6e3a1;
+}
+#clock {
+	color: #f38ba8;
+	background: #181825;
+	border: 2px solid #f38ba8;
+}
+#image {
+	background: #181825;
+	padding: 0 4px;
+	border: 2px solid #bac2de;
+}
+#mpris {
+	color: #cba6f7;
+	background: #181825;
+	border: 2px solid #cba6f7;
+}
+
+#user,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date 
+#image {
+	padding: 4 8px;
+}

@@ -1,0 +1,47 @@
+@define-color foreground #eeeeee;
+@define-color foreground-active #2794f5;
+@define-color foreground-empty #aaaaaa;
+@define-color foreground-urgent #ff590a;
+@define-color background #111111;
+
+* {
+    font-family: Ubuntu Mono;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+#image {
+	padding: 0 1px;
+	margin: 4 2px;
+}
+
+#waybar {
+    color: @foreground;
+    background-color: @background;
+	/* opacity: 0.7; */
+}
+
+#workspaces button {
+	padding: 0 4px;
+    color: @foreground;
+}
+
+#workspaces button.active {
+    color: @foreground-active;
+}
+
+#workspaces button.empty {
+    color: @foreground-empty;
+}
+
+#workspaces button.urgent {
+	color: @foreground-urgent;
+}
+
+#wireplumber,
+#idle_inhibitor,
+#network,
+#tray {
+    padding-right: 1em 
+}

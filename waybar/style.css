@@ -1,55 +1,175 @@
+@import url('../../.cache/wal/colors-waybar.css');
+
 * {
-	font-size: 14px;
-	font-family: Iosevka Medium;
+    font-size:13px;
+    font-family: "CodeNewRoman Nerd Font Propo";
 }
-
-window#waybar {
-	background: #1f1f1f;
-	color: #e5e5e5;
+window#waybar{
+    all:unset;
 }
-
-#image {
-	padding: 0 2px;
-	margin: 0 3px;
+wireplumber {
 }
-
-#tags button {
-	padding: 0 4px;
-	color: #666666;
-}
-#tags button:hover {
-	box-shadow: inherit;
-	text-shadow: inherit;
-}
-#tags button:hover {
-	background: #444444;
-	border: #444444;
+image {
 	padding: 0 4px;
 }
-#tags button.occupied {
-	color: #e5e5e5;
+.modules-left {
+    padding:7px;
+    margin:10 0 5 10;
+	border: 2px solid @color9;
+    border-radius:10px;
+    background: alpha(@background,.9);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
-#tags button.focused {
-	color: #ce9178;
+.modules-center {
+    padding:7px;
+    margin:10 0 5 0;
+	border: 2px solid @color9;
+    border-radius:10px;
+    background: alpha(@background,.9);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
 }
-#tags button.urgent {
-	color: #dc9513;
+.modules-right {
+    padding:7px;
+    margin: 10 10 5 0;
+	border: 2px solid @color9;
+    border-radius:10px;
+    background: alpha(@background,.9);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+}
+tooltip {
+    background:@background;
+    color: @color7;
+}
+#clock:hover, #custom-pacman:hover, #custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover{
+    transition: all .3s ease;
+    color:@color9;
+}
+#custom-notification {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+}
+#clock{
+    padding: 0px 5px;
+    color:@color7;
+    transition: all .3s ease;
+}
+#custom-pacman{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+
+}
+#workspaces {
+    padding: 0px 5px;
+}
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: alpha(@color9,.4);
+    transition: all .2s ease;
+}
+#workspaces button:hover {
+    color:rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: @color9;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+#workspaces button.empty {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+#workspaces button.empty:hover {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.empty.active {
+    color: @color9;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+#bluetooth{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+
+}
+#network{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+
+}
+#battery{
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color:@color7;
+
+
+}
+#battery.charging {
+    color: #26A65B;
 }
 
-#layout {
-	padding: 4 5px;
-	color: #1f1f1f;
-	background: #9cdcfe;
-	margin: 2 4px;
-	border-radius: 4px;
+#battery.warning:not(.charging) {
+    color: #ffbe61;
 }
 
-#idle_inhibitor,
-#cava,
-#clock,
-#memory,
-#cpu, 
-#battery,
-#date {
-	padding: 0 2px;
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#group-expand{
+    padding: 0px 5px;
+    transition: all .3s ease; 
+}
+#custom-expand{
+    padding: 0px 5px;
+    color:alpha(@foreground,.2);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+    transition: all .3s ease; 
+}
+#custom-expand:hover{
+    color:rgba(255,255,255,.2);
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+}
+#custom-colorpicker{
+    padding: 0px 5px;
+}
+#cpu,#memory,#temperature{
+    padding: 0px 5px;
+    transition: all .3s ease; 
+    color:@color7;
+
+}
+#custom-endpoint{
+    color:transparent;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+
+}
+#tray{
+    padding: 0px 5px;
+    transition: all .3s ease; 
+
+}
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease; 
+}
+
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease; 
 }

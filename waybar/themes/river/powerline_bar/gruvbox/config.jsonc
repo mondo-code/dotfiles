@@ -1,0 +1,144 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"custom/separator#1",
+		"image",
+		"custom/separator#1",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/tags",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"river/layout",
+		"custom/right-arrow-dark",
+		"custom/separator#2",
+		"river/window",
+	],
+	"modules-center": [
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"idle_inhibitor",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"cpu",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock",
+	],
+
+	"river/tags": {
+		"num_tags": 9,
+		"tag-labels": [
+			"I",
+			"II",
+			"III",
+			"IV",
+			"V",
+			"VI",
+			"VII",
+			"VIII",
+			"IX",
+		],
+	},
+
+	"river/window": {
+		"format": "{}",
+		"max-length": 500,
+	},
+	
+	"custom/separator#1": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/separator#2": {
+		"format": " ",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/arch_gruvbox.png",
+		"on-click": "rofi -show drun",
+		"size": 22
+	},
+	"clock": {
+		"interval": true,
+		"tooltip": true,
+		"format": "{:%a %m-%d-%Y %I:%M %p}"
+	},
+
+	"idle_inhibitor": {
+		"format": "{icon}  {status}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"memory": {
+		"interval": 5,
+		"format": "μ {used:0.1f}G"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "π {usage:2}%"
+	},
+	// this is here in case of running this on a laptop
+	"battery": {
+		"states": {
+			"good": 85,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"cava": {
+//        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "framerate": 30,
+        "autosens": 1,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+}

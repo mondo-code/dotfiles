@@ -1,0 +1,76 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"image",
+		"river/tags"
+	],
+	"modules-center": [
+		"river/window"
+	],
+	"modules-right": [
+		"memory",
+		"custom/delimiter",
+		"cpu",
+		"custom/delimiter",
+		"clock"
+	],
+
+	"river/tags": {
+		"num-tags": 9
+	},
+
+	"river/window": {
+		"format": "{}",
+		"max-length": 110
+	},
+	
+	"custom/delimiter": {
+		"format": " | ",
+		"tooltip": false
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
+		"on-click": "fuzzel",
+		"size": 18
+	},
+	"clock": {
+		"format": "τ {:%m-%d-%Y %I:%M %p}",
+		"tooltip": false
+	},
+
+	"idle_inhibitor": {
+		"format": "{icon}  {status}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"memory": {
+		"interval": 5,
+		"format": "μ {used:0.1f}G"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "π {usage:2}%"
+	},
+	// this is here in case of running this on a laptop
+	"battery": {
+		"states": {
+			"good": 85,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+}

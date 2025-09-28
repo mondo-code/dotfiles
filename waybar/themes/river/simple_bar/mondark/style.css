@@ -1,0 +1,55 @@
+* {
+	font-size: 14px;
+	font-family: Iosevka Medium;
+}
+
+window#waybar {
+	background: #1f1f1f;
+	color: #e5e5e5;
+}
+
+#image {
+	padding: 0 2px;
+	margin: 0 3px;
+}
+
+#tags button {
+	padding: 0 4px;
+	color: #666666;
+}
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#tags button:hover {
+	background: #444444;
+	border: #444444;
+	padding: 0 4px;
+}
+#tags button.occupied {
+	color: #e5e5e5;
+}
+#tags button.focused {
+	color: #ce9178;
+}
+#tags button.urgent {
+	color: #dc9513;
+}
+
+#layout {
+	padding: 4 5px;
+	color: #1f1f1f;
+	background: #9cdcfe;
+	margin: 2 4px;
+	border-radius: 4px;
+}
+
+#idle_inhibitor,
+#cava,
+#clock,
+#memory,
+#cpu, 
+#battery,
+#date {
+	padding: 0 2px;
+}

@@ -1,0 +1,112 @@
+// -*- mode: json -*-
+
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"custom/rofi_button",
+		"custom/left_sep",
+		"river/tags",
+		"custom/right_sep"
+	],
+	"modules-center": [
+		"clock",
+	],
+	"modules-right": [
+		"custom/left_sep",
+		"idle_inhibitor",
+		"custom/right_sep",
+		"custom/left_sep",
+		"user",
+		"custom/right_sep",
+		"custom/left_sep",
+		"cpu",
+		"custom/right_sep",
+		"custom/left_sep",
+		"memory",
+		"custom/right_sep",
+	],
+
+	"custom/rofi_button": {
+		"format": "arch linux ",
+		"on-click": "rofi -show drun"
+	},
+
+	"custom/left_sep": {
+		"format": "["
+	},
+	"custom/right_sep": {
+		"format": "]"
+	},
+
+	"river/tags": {
+		"num_tags": 9,
+		"tag-labels": [
+			"01",
+			"02",
+			"03",
+			"04",
+			"05",
+			"06",
+			"07",
+			"08",
+			"09",
+		],
+	},
+
+	"river/window": {
+		"format": "{}",
+		"max-length": 300,
+	},
+	
+	"idle_inhibitor": {
+		"format": " {icon}  {status} ",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+
+	"user": {
+		"format": "Ω {work_d}:{work_H}:{work_M}",
+		"interval": 60
+	},
+	"image": {
+		"path": "/home/ray/.config/waybar/icons/archlinux-logo.png",
+		"on-click": "rofi -show drun",
+		"size": 22
+	},
+
+	"clock": {
+		"interval": true,
+		"tooltip": true,
+		"format": "{:%I:%M %p}",
+		"tooltip-format": "{:%a %m-%d-%Y}",
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": "μ {used:0.1f}G"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "π {usage:2}%"
+	},
+	// this is here in case of running this on a laptop
+	"battery": {
+		"states": {
+			"good": 90,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	}
+}

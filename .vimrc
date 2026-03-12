@@ -1,9 +1,13 @@
 " plugins
 call plug#begin()
 Plug 'jasonccox/vim-wayland-clipboard'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'yegappan/lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'nanotech/jellybeans.vim'
+Plug 'lervag/vimtex', { 'tag': 'v2.15' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -13,6 +17,7 @@ set relativenumber
 syntax enable
 let mapleader=","
 set ttimeoutlen=100
+set termguicolors
 
 " 4 space tabs
 set tabstop=4
@@ -31,16 +36,18 @@ set visualbell
 set t_vb=
 set encoding=utf8
 set si
-set wrap
+" set wrap
 set scrolloff=4
 set clipboard=unnamedplus
+set directory^=$HOME/.vim/tmp//
+nnoremap gb :buffers<CR>:buffer<Space>
 
 " LSP settings 
 let lspOpts = #{aleSupport: v:false,
         \   autoComplete: v:true,
-        \   autoHighlight: v:true,
+        \   autoHighlight: v:false,
         \   autoHighlightDiags: v:true,
-        \   autoPopulateDiags: v:true,
+        \   autoPopulateDiags: v:false,
         \   completionMatcher: 'case',
         \   completionMatcherValue: 1,
         \   diagSignErrorText: 'E>',
@@ -49,18 +56,18 @@ let lspOpts = #{aleSupport: v:false,
         \   diagSignWarningText: 'W>',
         \   echoSignature: v:false,
         \   hideDisabledCodeActions: v:false,
-        \   highlightDiagInline: v:true,
+        \   highlightDiagInline: v:false,
         \   hoverInPreview: v:false,
         \   completionInPreview: v:false,
         \   closePreviewOnComplete: v:true,
         \   ignoreMissingServer: v:false,
         \   keepFocusInDiags: v:true,
         \   keepFocusInReferences: v:true,
-        \   completionTextEdit: v:true,
-        \   diagVirtualTextAlign: 'above',
-        \   diagVirtualTextWrap: 'default',
-        \   noNewlineInCompletion: v:false,
-        \   omniComplete: v:null,
+        \   completionTextEdit: v:false,
+        \   diagVirtualTextAlign: 'below',
+        \   diagVirtualTextWrap: 'truncate',
+        \   noNewlineInCompletion: v:true,
+        \   omniComplete: v:false,
         \   omniCompleteAllowBare: v:false,
         \   outlineOnRight: v:false,
         \   outlineWinSize: 20,
@@ -75,7 +82,7 @@ let lspOpts = #{aleSupport: v:false,
         \   showDiagInPopup: v:true,
         \   showDiagOnStatusLine: v:false,
         \   showDiagWithSign: v:true,
-        \   showDiagWithVirtualText: v:false,
+        \   showDiagWithVirtualText: v:true,
         \   showInlayHints: v:false,
         \   showSignature: v:true,
         \   snippetSupport: v:false,
@@ -111,13 +118,19 @@ let lspServers = [
 			\   path: '/usr/bin/pyright-langserver',
 			\   args: ['--stdio']
 			\ },
-			\ 
-			\	#{
+			\ #{
 			\    name: 'rustlang',
 			\    filetype: ['rust'],
 			\    path: '/usr/bin/rust-analyzer',
 			\    args: [],
 			\    syncInit: v:true
+			\ },
+			\ #{
+			\	name: 'zig',
+			\	filetype: ['zig'],
+			\	path: '/usr/bin/zls',
+			\	args: [],
+			\	syncInit: v:true
 			\  }
 			\ ]
 
@@ -127,6 +140,15 @@ nnoremap <c-]>		<cmd>LspGotoDefinition<cr>
 nnoremap g]			<cmd>LspPeekDefinition<cr>
 nnoremap <leader>xx <cmd>LspDiag show<cr>
 nnoremap <leader>e	<cmd>LspDiag here<cr>
+
+" make autocomplete popup tolerable
+set completeopt=menu,menuone,popup,noinsert
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " clipboard binds
 nnoremap <leader>Y "+yg_
@@ -143,8 +165,19 @@ ca tn tabnew
 nnoremap <leader>ff :Files<CR> 
 nnoremap <leader>fg :Rg<CR> 
 
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme = 'jellybeans'
+let g:airline_powerline_fonts = 1
+
+" vimtex config
+filetype plugin indent on
+let g:vimtex_view_method = 'zathura'
+let maplocalleader = ","
+
 " visual
-" colorscheme sorbet 
-colorscheme retrobox
+colorscheme jellybeans 
 set background=dark
-hi Normal guibg=NONE ctermbg=NONE
+" transparent background
+" hi Normal guibg=NONE ctermbg=NONE

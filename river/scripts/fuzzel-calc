@@ -5,7 +5,7 @@ LAST=""
 
 while true; do
 	[ -z "$LAST" ] && SPACE=" "
-	NEXT="$(fuzzel -l 0 --dmenu -p "${LAST}${SPACE}")"
+	NEXT="$(fuzzel --config /home/ray/.config/fuzzel/river.ini -l 0 --dmenu -p "${LAST}${SPACE}")"
 	# Quit if empty
 	[ -z "$NEXT" ] && exit 1
 	# Copy and exit if y is entered

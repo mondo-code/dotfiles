@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SCRIPTS_DIR="$HOME/.config/river/scripts"
+
+mapfile -t files < <(
+	find "$SCRIPTS_DIR" -type f
+)
+
+selection=$(printf '%s\n' "${files[@]}" \
+			| fuzzel -l 20 -w 55 -d -p "Scripts: " --config=/home/ray/.config/fuzzel/river.ini)
+
+if [[ $? -ne 0 || -z "$selection" ]]; then
+	echo "No script selected."
+	exit 1
+fi
+
+exec $selection

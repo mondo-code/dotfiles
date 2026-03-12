@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if pgrep -x dam >/dev/null; then
+    pkill dam 
+else
+	# waybar -c ~/.config/waybar/config-river -s ~/.config/waybar/style-river.css
+	$HOME/.config/river/scripts/riverstatus | dam
+fi

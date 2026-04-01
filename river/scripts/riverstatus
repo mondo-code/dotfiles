@@ -1,10 +1,15 @@
 #!/bin/sh
 
+disk_free() {
+	df -h /home | awk 'NR==2 { print $4 }'
+}
+
 while true; do
 	pgrep -x swayidle >/dev/null && idle_enabled="on" || idle_enabled="off"
 	cpu_usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
 	memory="$(free -h | sed -n "2s/\([^ ]* *\)\{2\}\([^ ]*\).*/\2/p")"
+	disk=$(disk_free)
 	current_time=$(date +"%m/%d/%Y %I:%M %p")
-	cat <<< "σ $idle_enabled │ π $cpu_usage │ μ $memory │ τ $current_time"
+	cat <<< "λ $idle_enabled │ π $cpu_usage │ μ $memory │ σ $disk │ τ $current_time"
 	sleep 2 
 done

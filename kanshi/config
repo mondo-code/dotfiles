@@ -1,0 +1,17 @@
+output "LG Electronics LG ULTRAGEAR 407NTYT7J402" {
+	mode 2560x1440@239.970001
+	position 0,0
+	alias $LEFT
+}
+
+output "BNQ ZOWIE XL LCD 7BK02030SL0" {
+	mode 1920x1080@144.001007
+	position 2560,0
+	alias $RIGHT
+}
+
+profile {
+	output $LEFT enable
+	output $RIGHT enable
+	exec xrandr --output DP-3 --mode 2560x1440 --rate 239.88 --primary
+}

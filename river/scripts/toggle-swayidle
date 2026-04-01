@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if pgrep -x swayidle >/dev/null; then
-    pkill swayidle && notify-send -t 4000 'Idle disabled'
+	pkill swayidle && sleep 1 && notify-send -t 4000 'Idle disabled'
 else
-	swayidle -w \
-		timeout 900 'wlopm --off "*"' \
-		resume       'wlopm --on  "*"' \
-		before-sleep 'wlopm --off "*"' \
-		timeout 1800 'systemctl suspend' & disown \
-	&& notify-send -t 4000 'Idle enabled'
+    swayidle -w \
+        timeout 900 'wlopm --off "*"' \
+        resume       'sleep 1 && wlopm --on  "*"' \
+        before-sleep 'wlopm --off "*"' \
+        timeout 1800 'systemctl suspend' & disown \
+    && notify-send -t 4000 'Idle enabled'
 fi

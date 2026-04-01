@@ -1,0 +1,20 @@
+#!/bin/bash
+
+OUTPUT="$HOME/Videos/recording_$(date +%Y-%m-%d_%H-%M-%S).mp4"
+
+if pgrep -x wf-recorder >/dev/null; then
+	pkill wf-recorder
+	notify-send -t 3000 "Recording stopped and saved to videos"
+	exit 0 
+fi
+
+MONITOR=$(slurp -o -f "%o")
+
+if [ -z "$MONITOR" ]; then
+    notify-send -t 3000 "Recording cancelled"
+    exit 1
+fi
+
+# TODO: capture desktop audio, ffmpeg is good for this
+notify-send -t 3000 "Recording started"
+wf-recorder -o $MONITOR --audio -r 60 --file=$OUTPUT 

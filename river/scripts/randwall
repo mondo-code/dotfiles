@@ -1,5 +1,7 @@
 #!/bin/sh
 
 WALLPAPER=$(find "$HOME/Pictures/Wallpapers" -type f | shuf -n 1)
-killall wbg 
+rm $HOME/.cache/wallpaper
+ln -s $WALLPAPER $HOME/.cache/wallpaper
+pkill wbg 
 wbg "$WALLPAPER" -s &

@@ -15,6 +15,7 @@ if [ -z "$MONITOR" ]; then
     exit 1
 fi
 
-# TODO: capture desktop audio, ffmpeg is good for this
 notify-send -t 3000 "Recording started"
-wf-recorder -o $MONITOR --audio -r 60 --file=$OUTPUT 
+# requires setup in pactl of a combined source that merges mic input with main
+# desktop audio
+wf-recorder -o $MONITOR --audio=Combined.monitor -r 60 --file=$OUTPUT 

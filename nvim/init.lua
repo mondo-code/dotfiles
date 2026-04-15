@@ -1,7 +1,4 @@
-require("config.lazy")
-require("config.lsp")
-
--- normal vim stuff
+-- general vim stuff before plugins in case plugins need anything defined
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -18,6 +15,9 @@ vim.opt.scrolloff = 4
 vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 vim.cmd[[set mouse=]]
+vim.g.mapleader = ","
+
+require('plugins')
 
 -- copy/paste
 vim.cmd[[vnoremap <leader>y "+y]]
@@ -29,27 +29,47 @@ vim.cmd[[nnoremap <leader>P "+P]]
 vim.cmd[[vnoremap <leader>p "+p]]
 vim.cmd[[vnoremap <leader>P "+P]]
 
--- tabs
-vim.cmd[[ca tn tabnew]]
-vim.cmd[[ca th tabp]]
-vim.cmd[[ca tl tabn]]
+-- buffers 
+vim.opt.hidden = true
+vim.keymap.set('n', '<C-N>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<C-P>', '<cmd>bprev<CR>')
+vim.keymap.set('n', '<C-W>d', '<cmd>bd<CR>')
 
--- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+-- LSP stuff
+vim.lsp.enable({
+	"pyright",
+	"lua_ls",
+	"clangd",
+	"gopls",
+	"v-analyzer",
+	"rust-analyzer",
+	"zls"
+})
 
--- transparent background
--- vim.cmd([[
--- augroup TransparentBackground
--- autocmd!
--- autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
--- autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
--- augroup END
--- ]])
+vim.diagnostic.config({
+    virtual_lines = true,
+    -- virtual_text = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+        source = true,
+    },
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            [vim.diagnostic.severity.WARN] = "󰀪 ",
+            [vim.diagnostic.severity.INFO] = "󰋽 ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            [vim.diagnostic.severity.WARN] = "WarningMsg",
+        },
+    },
+})
 
 -- colors
 vim.o.background = "dark"
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd.colorscheme('vague')

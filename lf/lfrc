@@ -1,0 +1,68 @@
+set ratios 1:2:3
+set hidden true
+set ignorecase true
+set icons true
+set sixel true
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+set shell bash
+
+cmd trash %set -f; mv $fx ~/.trash
+cmd cleartrash %rm -rf ~/.trash/*
+
+cmd delete ${{
+    set -f
+    rm -rf $fx
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd setwallpaper &{{
+	pkill wbg
+	rm $HOME/.cache/wallpaper
+	ln -s "$f" "$HOME/.cache/wallpaper"
+	wbg -s "$f" &
+}}
+
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+map p paste
+map <c-x> cut
+map x $$f
+map X !$f
+map yy copy
+#map yn copy-filename
+map za unarchive 
+map <c-c> pathcopy
+map R reload
+map dd trash
+map <delete> delete 
+map tc cleartrash
+map mf mkfile
+map md mkdir
+map bg setwallpaper
+map U unselect
+map <enter> shell
+map gc cd ~/.config
+map gC cd ~/Code
+map gW cd ~/Pictures/Wallpapers
+map gD cd ~/Downloads
+map gM cd /extra/Media

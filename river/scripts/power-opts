@@ -1,0 +1,8 @@
+#!/bin/bash
+
+case "$(printf "shutdown\nreboot\nsuspend\nmonitorsoff\n" | fuzzel -d -l 4 $@ -p "Power:")" in
+	shutdown) exec shutdown now;;
+	reboot) exec reboot;;
+	suspend) exec systemctl suspend;;
+	monitorsoff) exec wlopm --off *;; 
+esac

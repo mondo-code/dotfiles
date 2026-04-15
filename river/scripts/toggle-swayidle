@@ -7,6 +7,6 @@ else
         timeout 900 'wlopm --off "*"' \
         resume       'sleep 1 && wlopm --on  "*"' \
         before-sleep 'wlopm --off "*"' \
-        timeout 1800 'systemctl suspend' & disown \
+		timeout 1800 'sleep 1 && systemctl suspend' \
     && notify-send -t 4000 'Idle enabled'
 fi

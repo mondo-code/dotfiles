@@ -3,18 +3,21 @@
 SCRIPTS="$HOME/.config/river/scripts"
 
 riverctl map normal Super Return spawn foot
-riverctl map normal Super R spawn "fuzzel --config=/home/ray/.config/fuzzel/river.ini"
-riverctl map normal Super B spawn firefox 
-riverctl map normal Super E spawn thunar 
+riverctl map normal Super D spawn fuzzel
+riverctl map normal Super E spawn "foot lf"
+riverctl map normal Super B spawn "chromium --force-dark-mode --enable-blink-features=MiddleClickAutoscroll" 
 riverctl map normal Super+Shift R spawn "$SCRIPTS/randwall"
 riverctl map normal Super+Shift S spawn "$SCRIPTS/screenshot"
 riverctl map normal Super+Shift C spawn "$SCRIPTS/fuzzel-calc"
 riverctl map normal Super+Shift B spawn "$SCRIPTS/get-bookmark"
 riverctl map normal Super+Shift Y spawn "wl-color-picker clipboard"
+riverctl map normal Super+Control A spawn "foot wiremix"
 riverctl map normal Super+Control G spawn "$SCRIPTS/toggle-gammastep" 
 riverctl map normal Super+Control I spawn "$SCRIPTS/toggle-swayidle" 
 riverctl map normal Super+Control R spawn "$SCRIPTS/record-screen"
 riverctl map normal Super+Control B spawn "$SCRIPTS/toggle-bar"
+riverctl map normal Super+Control P spawn "$SCRIPTS/power-opts"
+riverctl map normal Super+Control H spawn "foot htop"
 riverctl map normal Super Q close
 riverctl map normal Super+Control E exit
 
@@ -38,8 +41,6 @@ riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
 riverctl map normal Super Down  send-layout-cmd rivercarro "main-location bottom"
 riverctl map normal Super Left  send-layout-cmd rivercarro "main-location left"
 riverctl map normal Super M     send-layout-cmd rivercarro "main-location monocle"
-# riverctl map normal Super G		send-layout-cmd riverdeck "main-location grid"
-# riverctl map normal Super D		send-layout-cmd riverdeck "main-location deck"
 
 # Super+Period and Super+Comma to focus the next/previous output
 riverctl map normal Super Period focus-output DP-1 
@@ -158,7 +159,6 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
 done
 
-
 # keyboard repeat rate
 riverctl set-repeat 50 300
 
@@ -174,8 +174,8 @@ riverctl focus-follows-cursor normal
 riverctl allow-tearing enabled
 
 riverctl background-color 0x111111
-#riverctl border-color-focused 0x4488ffff
-riverctl border-color-focused 0x941729ff
+riverctl border-color-focused 0x4488ffff
+# riverctl border-color-focused 0x941729ff
 riverctl border-color-unfocused 0x444444cc
 riverctl border-color-urgent 0xf54927cc
 riverctl border-width 1 
@@ -189,19 +189,30 @@ riverctl spawn kanshi
 riverctl spawn "~/.config/river/scripts/riverstatus | dam"
 
 # custom setup for my system
-riverctl spawn "$SCRIPTS/randwall"
+riverctl spawn "wbg $HOME/.cache/wallpaper -s"
 riverctl spawn "$SCRIPTS/display-align"
 wlr-randr --output DP-3 --mode 2560x1440@239.970001 --pos 0,0 --output DP-1 --mode 1920x1080@144.001007 --pos 2560,0
-#riverctl xcursor-theme WhiteSur-cursors 
+riverctl xcursor-theme Adwaita
 
-# for screensharing portal to work w/ systemd
 systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
 systemctl --user restart xdg-desktop-portal
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+
+# old non-systemd stuff
+# if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+#     eval $(dbus-launch --sh-syntax --exit-with-session)
+# fi
+
+# exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+# exec dbus-update-activation-environment DISPLAY  WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=River
+
+# /usr/libexec/xdg-desktop-portal &
+# /usr/libexec/xdg-desktop-portal-wlr &
+# /usr/libexec/xdg-desktop-portal-termfilechooser &
 
 # idle management
 swayidle -w \
   timeout 900 'wlopm --off "*"' \
   resume       'sleep 1 && wlopm --on "*"' \
   before-sleep 'wlopm --off "*"' \
-  timeout 1800 'systemctl suspend' & disown
+  timeout 1800 'sleep 1 && systemctl suspend'

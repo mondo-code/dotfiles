@@ -5,10 +5,12 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/lervag/vimtex" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
-	{ src = "https://github.com/xiyaowong/transparent.nvim" },
-	{ src = "https://github.com/vague-theme/vague.nvim" }
+	{ src = "https://github.com/WTFox/jellybeans.nvim" },
+	{ src = "https://github.com/ellisonleao/gruvbox.nvim" },
+	{ src = "https://github.com/xiyaowong/transparent.nvim" }
 })
 vim.g.vimtex_view_method = "zathura"
+require('gruvbox').setup()
 vim.pack.add({
     { src = "https://github.com/ibhagwan/fzf-lua" },
 })
@@ -72,25 +74,20 @@ cmp.setup({
 -- lualine
 vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
-	{ src = "https://github.com/akinsho/bufferline.nvim" }
 })
 require("lualine").setup({
-	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'branch', 'diff', 'diagnostics'},
-		lualine_c = {'filename'},
-		lualine_x = {'encoding', 'fileformat', 'filetype'},
-		-- lualine_y = {'progress'},
-		lualine_y = {
-			function()
-				return vim.fn.line('.') .. '/' .. vim.fn.line('$')
-			end
-		},
-		lualine_z = {'location'}
+	options = {
+		component_separators = "",
+		section_separators = "",
 	},
-})
-require("bufferline").setup({
-	options = { show_buffer_close_icons = false, }
+	sections = {
+		lualine_a = {},
+		lualine_b = {'branch', 'diff', 'diagnostics', 'filename'},
+		lualine_c = {'buffers'},
+		lualine_x = {'encoding', 'fileformat', 'filetype'},
+		lualine_y = {'location', 'progress'},
+		lualine_z = {}
+	},
 })
 
 vim.api.nvim_create_user_command("PackUpdate", function()

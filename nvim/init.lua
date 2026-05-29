@@ -16,23 +16,25 @@ vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 vim.cmd[[set mouse=]]
 vim.g.mapleader = ","
+-- this is the ancient mystical spell that allows me to use relative line numbers in netrw
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 
 require('plugins')
 
 -- copy/paste
-vim.cmd[[vnoremap <leader>y "+y]]
-vim.cmd[[nnoremap <leader>Y "+yg_]]
-vim.cmd[[nnoremap <leader>y "+y]]
-vim.cmd[[nnoremap <leader>yy "+yy]]
-vim.cmd[[nnoremap <leader>p "+p]]
-vim.cmd[[nnoremap <leader>P "+P]]
-vim.cmd[[vnoremap <leader>p "+p]]
-vim.cmd[[vnoremap <leader>P "+P]]
+vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>Y', '"+yg_')
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>yy', '"+yy')
+vim.keymap.set('n', '<leader>p', '"+p')
+vim.keymap.set('n', '<leader>P', '"+P')
+vim.keymap.set('v', '<leader>p', '"+p')
+vim.keymap.set('v', '<leader>P', '"+P')
 
 -- buffers 
 vim.opt.hidden = true
-vim.keymap.set('n', '<C-N>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<C-P>', '<cmd>bprev<CR>')
+vim.keymap.set('n', '<C-L>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<C-H>', '<cmd>bprev<CR>')
 vim.keymap.set('n', '<C-W>d', '<cmd>bd<CR>')
 
 -- LSP stuff
@@ -70,6 +72,7 @@ vim.diagnostic.config({
     },
 })
 
--- colors
+-- colors/visual stuff
 vim.o.background = "dark"
-vim.cmd.colorscheme('vague')
+require('transparent').clear_prefix('lualine')
+vim.cmd.colorscheme('jellybeans')

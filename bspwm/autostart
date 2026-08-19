@@ -1,0 +1,9 @@
+#!/bin/sh
+
+pkill -f picom
+picom &
+
+pkill -f dunst
+dunst &
+
+feh --bg-scale ~/.cache/wallpaper

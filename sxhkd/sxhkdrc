@@ -4,23 +4,46 @@
 
 # browser
 super + b
-	brave
+	firefox
 
 # terminal emulator
 super + Return
-	alacritty
+	st
 
 # program launcher
 super + d 
-	rofi -show drun
+	dmenu_run
+
+super + ctrl + g
+	gammastep
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + ctrl + p
+	~/Scripts/dmenu-power
+
+super + ctrl + a 
+	st wiremix
+
+super + shift + b
+	~/Scripts/dmenu-bookmarks
+
+super + shift + s 
+	maim -s | xclip -selection clipboard -t image/png
+
+super + e
+	st lf
+
 #
 # bspwm hotkeys
 #
+
+# focus desktop if available on monitor, otherwise get through swap
+# if desktop is active on another monitor, focused and active desktops are swapped, and focus stays on focused monitor.
+super + {1-9}
+	bspc desktop --focus focused:^{1-9}
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -28,15 +51,15 @@ super + alt + {q,r}
 
 # close and kill
 super + q 
-	bspc node -{c,k}
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
-super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+# super + y
+# 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest window
 super + g
@@ -51,8 +74,8 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
+super + ctrl + {x,y,z}
+	bspc node -g {locked,sticky,private}
 
 #
 # focus/swap
@@ -63,8 +86,8 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+# 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
@@ -85,8 +108,16 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} 'focused:^{1-9}'
+
+# Move window to other monitor
+super + shift + {comma,period}
+	bspc node -m {prev,next} 
+
+# monitor focus binds (i'm used to dwm/river)
+super + {comma,period}
+	bspc monitor -f {DP-4,DP-0}
 
 #
 # preselect
